@@ -18,6 +18,7 @@ public class E_user
     private int cedula;
     private Nullable<DateTime> expe;
     private Nullable<DateTime> nacimiento;
+    private string mail;
 
     [Column("nombre")]
     public string User_name { get => user_name; set => user_name = value; }
@@ -32,4 +33,6 @@ public class E_user
     public DateTime? Expe { get => expe; set => expe = value; }
     [Column("fecha_nac")]
     public DateTime? Nacimiento { get => nacimiento; set => nacimiento = value; }
+    [Column("correo")]
+    public string Mail { get => mail; set => mail = value; }
 }

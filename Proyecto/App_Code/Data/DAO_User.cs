@@ -8,5 +8,12 @@ using System.Web;
 /// </summary>
 public class DAO_User
 {
-    
+    public void save_votantes(E_user vot)
+    {
+        using (var db = new Mapping())
+        {
+            db.votantes.Add(vot);
+            db.SaveChanges();
+        }
+    }
 }

@@ -37,9 +37,10 @@
 
     	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form id="form1" runat="server">
 				<span class="contact100-form-title">
 					Registro
+				<asp:TextBox ID="TextBox1" runat="server" Height="1%" Visible="False" Width="1%"></asp:TextBox>
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Nombre es requerido">
@@ -50,13 +51,13 @@
 
                 <div class="wrap-input100 validate-input" data-validate="Apellido es requerido">
 					<span class="label-input100">Apellido</span>
-					<input class="input100" type="text" name="name" placeholder="Apellido">
+					<input class="input100" type="text" name="lastname" placeholder="Apellido">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate="Identificacion">
 					<span class="label-input100">Cedula</span>
-					<input class="input100" type="number" name="number">
+					<input class="input100" type="number" name="cedula">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -69,7 +70,7 @@
                 <div class="wrap-input100 validate-input" data-validate="Nacimiento">
 					<span class="label-input100">Fecha de nacimiento</span>
                        <div class="form-group"> <!-- Date input -->
-                            <input class="form-control" id="date" name="date" placeholder="Dia-Mes-Año" type="text"/>
+                            <input class="form-control" id="date" name="date_nac" placeholder="Dia-Mes-Año" type="text"/>
                        </div>                  
 					<span class="focus-input100"></span>
 				</div>
@@ -77,7 +78,7 @@
                 <div class="wrap-input100 validate-input" data-validate="Expedicion">
 					<span class="label-input100">Fecha de expedicion</span>
                        <div class="form-group"> <!-- Date input -->
-                            <input class="form-control" id="date2" name="date" placeholder="Dia-Mes-Año" type="text"/>
+                            <input class="form-control" id="date2" name="date_e" placeholder="Dia-Mes-Año" type="text"/>
                        </div>                  
 					<span class="focus-input100"></span>
 				</div>
@@ -85,7 +86,7 @@
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn">
+						<button runat="server" onserverclick="button_enviar" class="contact100-form-btn">
 							<span>
 								Enviar							
 							</span>
@@ -94,7 +95,7 @@
                     <div></div>
                    <div style="margin-top:15px" class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn">
+						<button runat="server" onserverclick="button_salir" class="contact100-form-btn">
 							<span>
 								Salir								
 							</span>
@@ -131,8 +132,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <script>
     $(document).ready(function(){
-      var date_input=$('input[name="date"]');
-      var date_input2=$('input[name="date2"]');  //our date input has the name "date"
+      var date_input=$('input[name="date_nac"]');
+      var date_input2=$('input[name="date_e"]');  //our date input has the name "date"
       var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options={
         format: 'dd/mm/yyyy',
@@ -141,7 +142,7 @@
         autoclose: true,
       };
         date_input.datepicker(options);
-        date_input2.datepicker=$(options);
+        date_input2.datepicker(options);
     })
     </script>
 <!--===============================================================================================-->
@@ -150,14 +151,14 @@
 	<script src="../App_Themes/Form/js/main.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
 
-  gtag('config', 'UA-23581568-13');
-</script>
+        gtag('config', 'UA-23581568-13');
+    </script>
 
 </body>
 </html>
