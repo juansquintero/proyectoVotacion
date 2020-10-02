@@ -87,8 +87,7 @@
 						<div class="contact100-form-bgbtn"></div>
 						<button class="contact100-form-btn">
 							<span>
-								Enviar
-								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+								Enviar							
 							</span>
 						</button>
 					</div>
@@ -97,8 +96,7 @@
 						<div class="contact100-form-bgbtn"></div>
 						<button class="contact100-form-btn">
 							<span>
-								Salir
-								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+								Salir								
 							</span>
 						</button>
 					</div>
