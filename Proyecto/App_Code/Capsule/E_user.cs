@@ -15,9 +15,9 @@ public class E_user
     private string user_name;
     private string user_lastname;
     private int id;
-    private int cedula;
-    private Nullable<DateTime> expe;
-    private Nullable<DateTime> nacimiento;
+    private string cedula;
+    private string expe;
+    private string nacimiento;
     private string mail;
 
     [Column("nombre")]
@@ -28,11 +28,11 @@ public class E_user
     [Column("id")]
     public int Id { get => id; set => id = value; }
     [Column("cedula")]
-    public int Cedula { get => cedula; set => cedula = value; }
+    public string Cedula { get => cedula; set => cedula = value; }
     [Column("fecha_exp")]
-    public DateTime? Expe { get => expe; set => expe = value; }
+    public string Expe { get => expe; set => expe = value; }
     [Column("fecha_nac")]
-    public DateTime? Nacimiento { get => nacimiento; set => nacimiento = value; }
+    public string Nacimiento { get => nacimiento; set => nacimiento = value; }
     [Column("correo")]
     public string Mail { get => mail; set => mail = value; }
 }

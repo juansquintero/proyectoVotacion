@@ -45,25 +45,29 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Nombre es requerido">
 					<span class="label-input100">Nombre</span>
-					<input class="input100" type="text" name="name" placeholder="Nombre">
+					<input class="input100" type="text" name="name" id="name" placeholder="Nombre" required>
+                    
 					<span class="focus-input100"></span>
 				</div>
 
                 <div class="wrap-input100 validate-input" data-validate="Apellido es requerido">
 					<span class="label-input100">Apellido</span>
-					<input class="input100" type="text" name="lastname" placeholder="Apellido">
+					<input class="input100" type="text" name="lastname" id="lastname" placeholder="Apellido" required>
+                    
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate="Identificacion">
 					<span class="label-input100">Cedula</span>
-					<input class="input100" type="number" name="cedula">
+					<input class="input100" type="text" name="cedula" id="cedula" title="Cedula de ciudadania" pattern="[0-9]{6,10}" required>
+                   
 					<span class="focus-input100"></span>
 				</div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Un correo valido es necesario: ex@abc.xyz">
 					<span class="label-input100">Correo</span>
-					<input class="input100" type="text" name="email" placeholder="Ingrese su correo">
+					<input class="input100" type="text" name="email" id="email" placeholder="Ingrese su correo" required>
+                   
 					<span class="focus-input100"></span>
 				</div>
 
@@ -71,6 +75,7 @@
 					<span class="label-input100">Fecha de nacimiento</span>
                        <div class="form-group"> <!-- Date input -->
                             <input class="form-control" id="date" name="date_nac" placeholder="Dia-Mes-Año" type="text"/>
+                           
                        </div>                  
 					<span class="focus-input100"></span>
 				</div>
@@ -79,6 +84,7 @@
 					<span class="label-input100">Fecha de expedicion</span>
                        <div class="form-group"> <!-- Date input -->
                             <input class="form-control" id="date2" name="date_e" placeholder="Dia-Mes-Año" type="text"/>
+                           
                        </div>                  
 					<span class="focus-input100"></span>
 				</div>
@@ -86,7 +92,7 @@
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
-						<button runat="server" onserverclick="button_enviar" class="contact100-form-btn">
+						<button runat="server" onserverclick="button_enviar" CausesValidation="true" class="contact100-form-btn">
 							<span>
 								Enviar							
 							</span>
