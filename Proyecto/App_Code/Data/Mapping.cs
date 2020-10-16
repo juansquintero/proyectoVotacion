@@ -20,6 +20,7 @@ public class Mapping : DbContext
         
     }
     public DbSet<E_user> votantes { get; set; }
+    public DbSet<E_admin> user_admin { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {

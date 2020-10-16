@@ -61,10 +61,19 @@
 							¿Tiene alguna duda?
 						</span>
 
-						<a class="txt2" href="#">
+						<a class="txt2" href="support.aspx">
 							Click aqui para soporte
 						</a>
+                        <br><br />
+                        <span class="txt1">
+							Administrador
+						</span>
+
+						<a class="txt2" href="admin.aspx">
+							Click aqui 
+						</a>
 					</div>
+
 				</form>
 			</div>
 		</div>

@@ -19,6 +19,6 @@ public partial class View_index : System.Web.UI.Page
 
     protected void consultaBoton(object sender, EventArgs e)
     {
-        Response.Redirect("https://www.google.com");
+        Response.Redirect("~/View/support.aspx");
     }
 }
