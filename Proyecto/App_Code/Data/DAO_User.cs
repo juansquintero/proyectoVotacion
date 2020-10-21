@@ -33,4 +33,20 @@ public class DAO_User
             db.SaveChanges();
         }
     }
+
+    public List<E_candidato> GetCandidato()
+    {
+        using (var db = new Mapping())
+        {
+            return db.candidato.ToList();
+        }
+    }
+
+    public List<E_user> GetVotantes()
+    {
+        using (var db = new Mapping())
+        {
+            return db.votantes.ToList();
+        }
+    }
 }

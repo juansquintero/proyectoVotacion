@@ -28,7 +28,7 @@ public partial class View_admin : System.Web.UI.Page
         else
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona');</script>");
-            //Response.Redirect("admin_new.aspx");
+            Response.Redirect("admin_menu.aspx");
         }
     }
 

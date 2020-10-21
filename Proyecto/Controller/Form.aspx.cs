@@ -67,6 +67,8 @@ public partial class View_Form : System.Web.UI.Page
         new DAO_User().save_votantes(user);
 
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
+
+        Response.Redirect("~/View/selection_candidate.aspx");
     }
 
     protected void button_salir(object sender, EventArgs e)

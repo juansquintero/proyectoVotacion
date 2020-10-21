@@ -21,6 +21,7 @@ public class Mapping : DbContext
     }
     public DbSet<E_user> votantes { get; set; }
     public DbSet<E_admin> user_admin { get; set; }
+    public DbSet<E_candidato> candidato { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
