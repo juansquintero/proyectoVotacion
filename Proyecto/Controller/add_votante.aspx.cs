@@ -37,7 +37,7 @@ public partial class View_Form : System.Web.UI.Page
             if (!Regex.IsMatch(cedula, @"^\d+$"))
             {
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No es un numero');</script>");
-                Response.Redirect("~/View/Form.aspx");
+                Response.Redirect("~/View/add_votante.aspx");
             }
         }
         string user_mail = Page.Request.Form["email"].ToString();
@@ -58,25 +58,18 @@ public partial class View_Form : System.Web.UI.Page
 
         E_user user = new E_user();
 
+        user.User_name = user_name;
+        user.User_lastname = user_lastname;
         user.Cedula = cedula;
+        user.Mail = user_mail;
         user.Nacimiento = date_nac;
         user.Expe = date_exp;
 
-        new DAO_User().compareUser(user);
+        new DAO_User().save_votantes(user);
 
-        if (user == null)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Esta persona no existe o no puede votar');</script>");
-        }
-        else if(user.Cedula != cedula){
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No sea una loca');</script>");
-        }
-        else
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvenido');</script>");
-            //Response.Redirect("~/View/selection_candidate.aspx");
-        }
-      
+        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
+
+        Response.Redirect("~/View/admin_menu.aspx");
     }
 
     protected void button_salir(object sender, EventArgs e)

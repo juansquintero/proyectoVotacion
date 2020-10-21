@@ -17,6 +17,13 @@ public class DAO_User
         }
     }
 
+    public E_user compareUser(E_user user)
+    {
+        using (var db = new Mapping())
+        {
+            return db.votantes.Where(x => x.Cedula.Equals(user.Cedula) && x.Nacimiento.Equals(user.Nacimiento) && x.Expe.Equals(user.Expe)).FirstOrDefault();
+        }
+    }
     public E_admin login(E_admin user)
     {
         using (var db = new Mapping())

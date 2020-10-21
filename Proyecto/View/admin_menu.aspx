@@ -46,16 +46,28 @@
 						        <asp:Button ID="Button1" runat="server" Text="Button" Visible="False" />
 					</span></div>
 							<button id="boton_votacion" runat="server"  onserverclick="votantesBoton" class="login100-form-btn" type="button">
-								Votantes</button>
-						</div>
-					</div>
+								Votantes</button></div>
+                        </div>
+                    <div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>	
+                            <div>
+                            <button id="Button2" runat="server"  onserverclick="votantesBotonAdd" class="login100-form-btn" type="button">
+								Añadir - Votantes</button></div>
+						
+					</div></div>
                     <div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button id="boton_consulta" runat="server" onserverclick="candidatosBoton" class="login100-form-btn" type="button">
-								Candidatos</button>
-						</div>
-					</div>
+								Candidatos</button></div>
+						</div>					
+                    <div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>							
+                            <button id="boton_consulta2" runat="server" onserverclick="candidatosBotonAdd" class="login100-form-btn" type="button">
+								Añadir - Candidatos</button>
+						</div></div>	
 				</form>
 			</div>
 		</div>

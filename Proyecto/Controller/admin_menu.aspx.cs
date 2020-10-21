@@ -21,4 +21,14 @@ public partial class View_admin_menu : System.Web.UI.Page
     {
         Response.Redirect("~/View/candidatos_admin.aspx");
     }
+
+    protected void candidatosBotonAdd(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/candidatos_admin.aspx");
+    }
+
+    protected void votantesBotonAdd(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/add_votante.aspx");
+    }
 }

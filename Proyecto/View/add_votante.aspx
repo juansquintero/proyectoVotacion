@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Form.aspx.cs" Inherits="View_Form" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/add_votante.aspx.cs" Inherits="View_Form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +97,8 @@
 								Enviar							
 							</span>
 						</button>
-					</div>               
+					</div>
+                    <div></div>
                    <div style="margin-top:15px" class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
 						<button runat="server" onserverclick="button_salir" class="contact100-form-btn">
