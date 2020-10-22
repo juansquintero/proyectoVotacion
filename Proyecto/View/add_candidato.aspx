@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/Form.aspx.cs" Inherits="View_Form" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/add_candidato.aspx.cs" Inherits="View_add_candidato" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Formulario</title>
+	<title>Añadir candidato</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -59,33 +59,15 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Identificacion">
 					<span class="label-input100">Cedula</span>
-					<input class="input100" type="text" runat="server" onblur="validate(this)" name="cedula" id="cedula" title="Cedula de ciudadania" pattern="[0-9]{6,10}" required="required">
+					<input class="input100" type="text" name="cedula" id="cedula" title="Cedula de ciudadania" pattern="[0-9]{6,10}" required>
                    
 					<span class="focus-input100"></span>
 				</div>
 
-                <div class="wrap-input100 validate-input" data-validate = "Un correo valido es necesario: ex@abc.xyz">
-					<span class="label-input100">Correo</span>
-					<input class="input100" type="text" name="email" id="email" placeholder="Ingrese su correo" required>
-                   
-					<span class="focus-input100"></span>
-				</div>
-
-                <div class="wrap-input100 validate-input" data-validate="Nacimiento">
-					<span class="label-input100">Fecha de nacimiento</span>
-                       <div class="form-group"> <!-- Date input -->
-                            <input class="form-control" id="date" name="date_nac" placeholder="Dia-Mes-Año" type="text"/>
-                           
-                       </div>                  
-					<span class="focus-input100"></span>
-				</div>
-
-                <div class="wrap-input100 validate-input" data-validate="Expedicion">
-					<span class="label-input100">Fecha de expedicion</span>
-                       <div class="form-group"> <!-- Date input -->
-                            <input class="form-control" id="date2" name="date_e" placeholder="Dia-Mes-Año" type="text"/>
-                           
-                       </div>                  
+                <div class="wrap-input100 validate-input" data-validate="El partido es requerido">
+					<span class="label-input100">Apellido</span>
+					<input class="input100" type="text" name="partido" id="partido" placeholder="Partido" required>
+                    
 					<span class="focus-input100"></span>
 				</div>
 
@@ -97,7 +79,8 @@
 								Enviar							
 							</span>
 						</button>
-					</div>               
+					</div>
+                    <div></div>
                    <div style="margin-top:15px" class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
 						<button runat="server" onserverclick="button_salir" class="contact100-form-btn">
@@ -115,18 +98,6 @@
 
 	<div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-    <script>
-        function validate(input) {
-            var z = document.forms["form1"]["cedula"].value;
-            if (input.value.lenght === 0) {
-                alert("Por favor corrija");
-            }
-            if (!z.match(/^\d+/)) {
-                alert("No sea loca");
-            }
-        }
-    </script>
 <!--===============================================================================================-->
 	<script src="../App_Themes/Form/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

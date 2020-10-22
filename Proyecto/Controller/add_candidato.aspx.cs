@@ -6,13 +6,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class View_Form : System.Web.UI.Page
+public partial class View_add_candidato : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-    }
 
+    }
     protected void button_enviar(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
@@ -37,51 +36,31 @@ public partial class View_Form : System.Web.UI.Page
             if (!Regex.IsMatch(cedula, @"^\d+$"))
             {
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No es un numero');</script>");
-                Response.Redirect("~/View/Form.aspx");
+                Response.Redirect("~/View/add_votante.aspx");
             }
         }
-        string user_mail = Page.Request.Form["email"].ToString();
-        if (string.IsNullOrEmpty(user_mail))
+        string user_partido = Page.Request.Form["partido"].ToString();
+        if (string.IsNullOrEmpty(user_partido))
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su email');</script>");
         }
-        string date_nac = Page.Request.Form["date_nac"].ToString();
-        if (string.IsNullOrEmpty(date_nac))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-        }
-        string date_exp = Page.Request.Form["date_e"].ToString();
-        if (string.IsNullOrEmpty(date_exp))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese la fecha de expedicion de su documento');</script>");
-        }
 
-        E_user user = new E_user();
+        E_candidato user = new E_candidato();
 
-        user.Cedula = cedula;
-        user.Nacimiento = date_nac;
-        user.Expe = date_exp;
+        user.Nombre = user_name;
+        user.Apellido = user_lastname;
+        user.Cc = cedula;
+        user.Partido = user_partido;
 
-        user = new DAO_User().compareUser(user);
+        new DAO_User().save_candidatos(user);
 
-        if (user == null)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Esta persona no existe o no puede votar');</script>");
-        }
-        else if(user.Cedula != cedula){
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No sea una loca');</script>");
-        }
-        else
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvenido');</script>");
-            //Response.Redirect("~/View/selection_candidate.aspx");
-        }
-      
+        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
+
+        Response.Redirect("~/View/admin_menu.aspx");
     }
 
     protected void button_salir(object sender, EventArgs e)
     {
         Response.Redirect("~/View/index.aspx");
     }
-   
 }

@@ -14,7 +14,7 @@ public partial class View_admin_menu : System.Web.UI.Page
 
     protected void votantesBoton(object sender, EventArgs e)
     {
-        //Response.Redirect("~/View/Form.aspx");
+        Response.Redirect("~/View/votantes_admin.aspx");
     }
 
     protected void candidatosBoton(object sender, EventArgs e)
@@ -24,7 +24,7 @@ public partial class View_admin_menu : System.Web.UI.Page
 
     protected void candidatosBotonAdd(object sender, EventArgs e)
     {
-        Response.Redirect("~/View/candidatos_admin.aspx");
+        Response.Redirect("~/View/add_candidato.aspx");
     }
 
     protected void votantesBotonAdd(object sender, EventArgs e)

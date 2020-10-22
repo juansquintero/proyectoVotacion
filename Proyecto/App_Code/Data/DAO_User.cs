@@ -17,6 +17,15 @@ public class DAO_User
         }
     }
 
+    public void save_candidatos(E_candidato user)
+    {
+        using (var db = new Mapping())
+        {
+            db.candidato.Add(user);
+            db.SaveChanges();
+        }
+    }
+
     public E_user compareUser(E_user user)
     {
         using (var db = new Mapping())
