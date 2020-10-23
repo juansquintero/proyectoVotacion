@@ -50,6 +50,30 @@ public partial class View_Form : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
         }
+
+        DateTime date_now = DateTime.Now;
+        DateTime pruebaMeste = Convert.ToDateTime(date_nac);
+        int year = date_now.Year - pruebaMeste.Year;
+        int month = date_now.Month - pruebaMeste.Month;
+        int day = date_now.Day - pruebaMeste.Day;
+        if (month < 0)
+        {
+            year--;
+        }
+        else if (month == 0)
+        {
+            
+            if (day <= 0)
+            {
+                year--;
+            }
+        }
+        if (year < 18)
+        {
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+            Response.Redirect("~/View/Form.aspx");
+        }
+
         string date_exp = Page.Request.Form["date_e"].ToString();
         if (string.IsNullOrEmpty(date_exp))
         {

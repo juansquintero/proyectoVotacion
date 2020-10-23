@@ -10,7 +10,7 @@ public partial class View_Form : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void button_enviar(object sender, EventArgs e)
@@ -50,14 +50,38 @@ public partial class View_Form : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
         }
+        DateTime date_now = DateTime.Now;
+        DateTime pruebaMeste = Convert.ToDateTime(date_nac);
+        int year = date_now.Year - pruebaMeste.Year;
+        int month = date_now.Month - pruebaMeste.Month;
+        int day = date_now.Day - pruebaMeste.Day;
+        if (month < 0)
+        {
+            year--;
+        }
+        else if (month == 0)
+        {
+            //day <= 0 ? year : year - 1;
+            if (day <= 0)
+            {
+                year--;
+            }
+        }
+        if(year<18)
+        {
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Menor de edad');</script>");
+        }
+
         string date_exp = Page.Request.Form["date_e"].ToString();
         if (string.IsNullOrEmpty(date_exp))
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese la fecha de expedicion de su documento');</script>");
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Menor de Edad');</script>");
         }
 
         E_user user = new E_user();
 
+        user.User_name = user_name;
+        user.User_lastname = user_lastname;
         user.Cedula = cedula;
         user.Nacimiento = date_nac;
         user.Expe = date_exp;
@@ -68,7 +92,8 @@ public partial class View_Form : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Esta persona no existe o no puede votar');</script>");
         }
-        else if(user.Cedula != cedula){
+        else if (user.Cedula != cedula)
+        {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No sea una loca');</script>");
         }
         else
@@ -76,12 +101,12 @@ public partial class View_Form : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvenido');</script>");
             Response.Redirect("~/View/selection_candidate.aspx");
         }
-      
+
     }
 
     protected void button_salir(object sender, EventArgs e)
     {
         Response.Redirect("~/View/index.aspx");
     }
-   
+
 }
