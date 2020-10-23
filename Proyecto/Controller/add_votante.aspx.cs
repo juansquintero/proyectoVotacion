@@ -88,6 +88,7 @@ public partial class View_Form : System.Web.UI.Page
         user.Mail = user_mail;
         user.Nacimiento = date_nac;
         user.Expe = date_exp;
+        user.Voto = false;
 
         new DAO_User().save_votantes(user);
 
