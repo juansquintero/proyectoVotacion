@@ -65,7 +65,7 @@
 				</div>
 
                 <div class="wrap-input100 validate-input" data-validate="El partido es requerido">
-					<span class="label-input100">Apellido</span>
+					<span class="label-input100">Partido</span>
 					<input class="input100" type="text" name="partido" id="partido" placeholder="Partido" required>
                     
 					<span class="focus-input100"></span>

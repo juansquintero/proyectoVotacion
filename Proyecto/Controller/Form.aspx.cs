@@ -74,7 +74,7 @@ public partial class View_Form : System.Web.UI.Page
         else
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvenido');</script>");
-            //Response.Redirect("~/View/selection_candidate.aspx");
+            Response.Redirect("~/View/selection_candidate.aspx");
         }
       
     }
