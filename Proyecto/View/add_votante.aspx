@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/add_votante.aspx.cs" Inherits="View_Form" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="~/Controller/add_votante.aspx.cs" Inherits="View_add_votante" %>
 
 <!DOCTYPE html>
 <html lang="en">

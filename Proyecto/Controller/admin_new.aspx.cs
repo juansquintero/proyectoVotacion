@@ -30,7 +30,8 @@ public partial class View_admin_new : System.Web.UI.Page
 
         new DAO_User().save_admin(euser);
 
-        
+        //Pendiente correo para confirmar contraseña de admin
+
     }
 
     protected void salirButton(object sender, EventArgs e)

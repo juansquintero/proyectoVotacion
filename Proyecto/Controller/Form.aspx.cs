@@ -95,7 +95,7 @@ public partial class View_Form : System.Web.UI.Page
         }
         else if (user.Cedula != cedula)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No sea una loca');</script>");
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Esa cedula no existe');</script>");
         }
         else
         {
