@@ -30,7 +30,7 @@ public class DAO_User
     {
         using (var db = new Mapping())
         {
-            return db.votantes.Where(x => x.Cedula.Equals(user.Cedula) && x.Nacimiento.Equals(user.Nacimiento) && x.Expe.Equals(user.Expe)).FirstOrDefault();
+            return db.votantes.Where(x => x.Cedula.Equals(user.Cedula) && x.Nacimiento.Equals(user.Nacimiento) && x.User_name.Equals(user.User_name) && x.User_lastname.Equals(user.User_lastname) && x.Expe.Equals(user.Expe)).FirstOrDefault();
         }
     }
     public E_admin login(E_admin user)
