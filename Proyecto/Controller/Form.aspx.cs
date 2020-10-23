@@ -85,6 +85,7 @@ public partial class View_Form : System.Web.UI.Page
         user.Cedula = cedula;
         user.Nacimiento = date_nac;
         user.Expe = date_exp;
+        Session["validUser"] = user;
 
         user = new DAO_User().compareUser(user);
 

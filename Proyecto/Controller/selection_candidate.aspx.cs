@@ -26,10 +26,31 @@ public partial class View_selection_candidate : System.Web.UI.Page
             RadioButton rb = (datagrid.Rows[i].FindControl("rdbauthid")) as RadioButton;
             if (rb.Checked == true)
             {
-                Label1.Text = datagrid.Rows[i].Cells[1].Text;
+                //Prueba//Label1.Text = datagrid.Rows[i].Cells[1].Text;
+                E_registro_votado user = new E_registro_votado();
+
+                user.Nombre = ((E_user)Session["validUser"]).User_name;
+                user.Apellido = ((E_user)Session["validUser"]).User_lastname;
+                user.Cc = ((E_user)Session["validUser"]).Cedula;
+                user.Voto = true;
+
+                new DAO_User().save_votado(user);
+
+                E_conteo user2 = new E_conteo();
+
+                E_conteo ps = new DAO_User().getNoVotos(int.Parse(datagrid.Rows[i].Cells[0].Text));
+
+                user2.Id = ps.Id;
+                user2.N_votos = ps.N_votos+1;
+
+                new DAO_User().anadir_voto(user2);
+    
+
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ahhhhhh me vine');</script>");
+
             }
         }
 
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ahhhhhh me vine');</script>");
+        
     }
 }

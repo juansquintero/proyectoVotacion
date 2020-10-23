@@ -20,6 +20,7 @@ public class E_user
     private string nacimiento;
     private string mail;
     private bool voto;
+    private string session;
 
     [Column("nombre")]
     public string User_name { get => user_name; set => user_name = value; }
@@ -38,4 +39,6 @@ public class E_user
     public string Mail { get => mail; set => mail = value; }
     [Column("voto")]
     public bool Voto { get => voto; set => voto = value; }
+    [Column("session")]
+    public string Session { get => session; set => session = value; }
 }

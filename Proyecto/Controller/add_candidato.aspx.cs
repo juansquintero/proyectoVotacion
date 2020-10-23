@@ -46,13 +46,20 @@ public partial class View_add_candidato : System.Web.UI.Page
         }
 
         E_candidato user = new E_candidato();
+        E_conteo user2 = new E_conteo();
 
         user.Nombre = user_name;
         user.Apellido = user_lastname;
         user.Cc = cedula;
         user.Partido = user_partido;
 
+        user2.Nombre = user_name;
+        user2.Apellido = user_lastname;
+        user2.Partido = user_partido;
+        user2.N_votos = 0;
+
         new DAO_User().save_candidatos(user);
+        new DAO_User().conteo_add(user2);
 
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
 

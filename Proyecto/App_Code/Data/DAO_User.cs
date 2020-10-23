@@ -26,6 +26,45 @@ public class DAO_User
         }
     }
 
+    public void save_votado(E_registro_votado user)
+    {
+        using (var db = new Mapping())
+        {
+            db.registro_votado.Add(user);
+            db.SaveChanges();
+        }
+    }
+
+    public void conteo_add(E_conteo user)
+    {
+        using (var db = new Mapping())
+        {
+            db.conteo.Add(user);
+            db.SaveChanges();
+        }
+    }
+
+    public void anadir_voto(E_conteo voto)
+    {
+        using (var db = new Mapping())
+        {
+            E_conteo conteo = db.conteo.Where(x => x.Id == voto.Id).First();
+            conteo.N_votos = voto.N_votos;
+            db.conteo.Attach(conteo);
+            var entry = db.Entry(conteo);
+            entry.State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+
+    public E_conteo getNoVotos(int pas)
+    {
+        using (var db = new Mapping())
+        {
+            return db.conteo.Where(x => x.Id.Equals(pas)).FirstOrDefault();
+        }
+    }
+
     public E_user compareUser(E_user user)
     {
         using (var db = new Mapping())

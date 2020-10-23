@@ -31,4 +31,9 @@ public partial class View_admin_menu : System.Web.UI.Page
     {
         Response.Redirect("~/View/add_votante.aspx");
     }
+
+    protected void salir_click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/index.aspx");
+    }
 }
