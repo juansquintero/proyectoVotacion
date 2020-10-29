@@ -38,6 +38,7 @@ public partial class View_add_votante : System.Web.UI.Page
         else
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
+            Response.Redirect("~/View/admin_menu.aspx");
         }
 
        
