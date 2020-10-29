@@ -28,18 +28,19 @@ public partial class View_add_votante : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese el apellido');</script>");
         }
         string cedula = Page.Request.Form["cedula"].ToString();
-        if (string.IsNullOrEmpty(cedula))
+
+        int validate_cedula=0;
+        bool comprobation = int.TryParse(cedula, out validate_cedula);
+        if (comprobation==true)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
         }
         else
         {
-            if (!Regex.IsMatch(cedula, @"^\d+$"))
-            {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No es un numero');</script>");
-                Response.Redirect("~/View/add_votante.aspx");
-            }
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
         }
+
+       
         string user_mail = Page.Request.Form["email"].ToString();
         if (string.IsNullOrEmpty(user_mail))
         {
@@ -72,7 +73,7 @@ public partial class View_add_votante : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
             Response.Redirect("~/View/Form.aspx");
-        }
+        }//De la linea 555 a 76 se valida la edad por medio de una operación matemática
 
         string date_exp = Page.Request.Form["date_e"].ToString();
         if (string.IsNullOrEmpty(date_exp))
