@@ -25,13 +25,13 @@ public partial class View_add_votante : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
             E_user checkUser = new DAO_User().GetVotanteCheck(cedula);
-            if (checkUser.Cedula == cedula)
-            {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Es usuario ya existe');</script>");
-            }
-            else if(checkUser.Cedula == null)
+            if (checkUser.Cedula == null)
             {
                 todo();
+            }
+            else if(checkUser.Cedula == cedula)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Es usuario ya existe');</script>");
             }
         }
         else
