@@ -25,7 +25,7 @@ public partial class View_add_votante : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
             E_user checkUser = new DAO_User().GetVotanteCheck(cedula);
-            if (checkUser.Cedula == null)
+            if (checkUser == null)
             {
                 todo();
             }
