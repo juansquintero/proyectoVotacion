@@ -28,15 +28,25 @@ public partial class View_selection_candidate : System.Web.UI.Page
             {
 
                 E_registro_votado user = new E_registro_votado();
+                E_conteo user2 = new E_conteo();
 
-                user.Nombre = ((E_user)Session["validUser"]).User_name;
-                user.Apellido = ((E_user)Session["validUser"]).User_lastname;
-                user.Cc = ((E_user)Session["validUser"]).Cedula;
-                user.Voto = true;
+                //Validacion para confirmar que el usurio no ha votado
+
+                E_user pa = new DAO_User().getCandidatoVoto(((E_user)Session["validUser"]).Id);
+
+                if (pa.Voto == true)
+                {
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usted ya ha votado');</script>");
+                }
+                else
+                {
+                    user.Nombre = ((E_user)Session["validUser"]).User_name;
+                    user.Apellido = ((E_user)Session["validUser"]).User_lastname;
+                    user.Cc = ((E_user)Session["validUser"]).Cedula;
+                    user.Voto = true;
+                }
 
                 new DAO_User().save_votado(user);
-
-                E_conteo user2 = new E_conteo();
 
                 E_conteo ps = new DAO_User().getNoVotos(int.Parse(datagrid.Rows[i].Cells[0].Text));
 
@@ -44,9 +54,7 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 user2.N_votos = ps.N_votos+1;
 
                 new DAO_User().anadir_voto(user2);
-    
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ahhhhhh me vine');</script>");
-
+                    
                 Session["validUser"] = null;
                 Session.Abandon();
                 Session.Clear();

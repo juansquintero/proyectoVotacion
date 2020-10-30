@@ -40,7 +40,7 @@
 						Administrador
 					</span>
 					<span class="login100-form-avatar">
-						<img src="images/avatar-01.jpg" alt="AVATAR">
+						<img src="../Util_Support/profile.jpg" alt="AVATAR">
 					</span>
 
 					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Ingrese su numero de cedula">

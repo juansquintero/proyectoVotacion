@@ -97,6 +97,14 @@ public class DAO_User
         }
     }
 
+    public E_user getCandidatoVoto(int user_id)
+    {
+        using (var db = new Mapping())
+        {
+            return db.votantes.Where(x => x.Id.Equals(user_id)).FirstOrDefault();
+        }
+    }
+
     public List<E_user> GetVotantes()
     {
         using (var db = new Mapping())
