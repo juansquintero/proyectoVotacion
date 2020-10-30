@@ -20,6 +20,41 @@ public partial class View_add_candidato : System.Web.UI.Page
 
         E_candidato user = new E_candidato();
         E_conteo user2 = new E_conteo();
+        //-//
+        string cedula = Page.Request.Form["cedula"].ToString();
+        //-//
+        
+
+        int validate_cedula = 0;
+        bool comprobation = int.TryParse(cedula, out validate_cedula);
+        if (comprobation == true)
+        {
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
+            E_candidato checkCandidato = new DAO_User().GetCandidatoCheck(cedula);
+            if (checkCandidato.Cc == cedula)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Es candidato ya existe');</script>");
+            }
+            else
+            {
+                todo();
+            }
+        }
+        else
+        {
+            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
+            Response.Redirect("~/View/admin_menu.aspx");
+        }
+
+        
+    }
+
+    protected void todo()
+    {
+        ClientScriptManager cm = this.ClientScript;
+        E_candidato user = new E_candidato();
+        E_conteo user2 = new E_conteo();
+        string cedula = Page.Request.Form["cedula"].ToString();
 
         string user_name = Page.Request.Form["name"].ToString();
         if (string.IsNullOrEmpty(user_name))
@@ -43,20 +78,6 @@ public partial class View_add_candidato : System.Web.UI.Page
             user2.Apellido = user_lastname;
         }
 
-        string cedula = Page.Request.Form["cedula"].ToString();
-        int validate_cedula = 0;
-        bool comprobation = int.TryParse(cedula, out validate_cedula);
-        if (comprobation == true)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
-            user.Cc = cedula;
-        }
-        else
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
-            Response.Redirect("~/View/admin_menu.aspx");
-        }
-
         string user_partido = Page.Request.Form["partido"].ToString();
         if (string.IsNullOrEmpty(user_partido))
         {
@@ -68,6 +89,7 @@ public partial class View_add_candidato : System.Web.UI.Page
             user2.Partido = user_partido;
         }
 
+        user.Cc = cedula;
         user2.N_votos = 0;
 
         new DAO_User().save_candidatos(user);

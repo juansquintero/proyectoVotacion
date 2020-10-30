@@ -89,6 +89,30 @@ public class DAO_User
         }
     }
 
+    public E_admin getAdminCheck(string name)
+    {
+        using (var db = new Mapping())
+        {
+            return db.user_admin.Where(x => x.User_name_admin.Equals(name)).FirstOrDefault();
+        }
+    }
+
+    public E_candidato GetCandidatoCheck(string cedula)
+    {
+        using (var db = new Mapping())
+        {
+            return db.candidato.Where(x => x.Cc.Equals(cedula)).FirstOrDefault();
+        }
+    }
+
+    public E_user GetVotanteCheck(string cedula)
+    {
+        using (var db = new Mapping())
+        {
+            return db.votantes.Where(x => x.Cedula.Equals(cedula)).FirstOrDefault();
+        }
+    }
+
     public List<E_candidato> GetCandidato()
     {
         using (var db = new Mapping())
