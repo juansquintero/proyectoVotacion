@@ -30,6 +30,9 @@
  </asp:GridView>
      <asp:ObjectDataSource ID="ODS_Votatantes" runat="server" SelectMethod="GetVotantes" TypeName="DAO_User"></asp:ObjectDataSource>
  </div>
+     <div align="center">
+         <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="Button1_Click" Width="250px" />
+     </div>
  </form>
 </body>
 </html>

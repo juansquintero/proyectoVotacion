@@ -28,6 +28,9 @@
  </asp:GridView>
      <asp:ObjectDataSource ID="ODS_Candidato" runat="server" SelectMethod="GetCandidato" TypeName="DAO_User"></asp:ObjectDataSource>
  </div>
+     <div align="center">
+     <asp:Button ID="Button1" runat="server" Text="Salir" Width="250px" OnClick="Button1_Click" />
+         </div>
  </form>
 </body>
 </html>
