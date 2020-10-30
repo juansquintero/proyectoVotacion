@@ -31,13 +31,13 @@ public partial class View_add_candidato : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
             E_candidato checkCandidato = new DAO_User().GetCandidatoCheck(cedula);
-            if (checkCandidato.Cc == cedula)
+            if (checkCandidato.Cc == null)
+            {
+                todo();                
+            }
+            else if (checkCandidato.Cc == cedula)
             {
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Es candidato ya existe');</script>");
-            }
-            else
-            {
-                todo();
             }
         }
         else
