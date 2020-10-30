@@ -29,7 +29,7 @@ public partial class View_add_votante : System.Web.UI.Page
             {
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Es usuario ya existe');</script>");
             }
-            else
+            else if(checkUser.Cedula == null)
             {
                 todo();
             }
