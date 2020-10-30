@@ -19,7 +19,7 @@ public class E_user
     private string expe;
     private string nacimiento;
     private string mail;
-    private bool voto;
+    private bool? voto;
     private string session;
 
     [Column("nombre")]
@@ -38,7 +38,8 @@ public class E_user
     [Column("correo")]
     public string Mail { get => mail; set => mail = value; }
     [Column("voto")]
-    public bool Voto { get => voto; set => voto = value; }
+    public bool? Voto { get => voto; set => voto = value; }
     [Column("session")]
     public string Session { get => session; set => session = value; }
+    
 }
