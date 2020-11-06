@@ -38,6 +38,8 @@
     	<div class="container-contact100">
 		<div class="wrap-contact100">
 			<form id="form1" runat="server">
+
+                <asp:Label ID="lb_validarCedula" runat="server" Visible="false" />
 				<span class="contact100-form-title">
 					Registro
 				<asp:TextBox ID="TextBox1" runat="server" Height="1%" Visible="False" Width="1%"></asp:TextBox>
