@@ -136,4 +136,12 @@ public class DAO_User
             return db.votantes.ToList();
         }
     }
-}
+
+    //public bool validarCedula (string cedula) { 
+    
+    //    using (var db = new Mapping())
+    //    {
+    //        return db.votantes.Any(x => x.Cedula.Equals(cedula));
+    //    }
+    //} por favor colocar en github que ya se hizo para no repetir metodos como pendejo, muvcahs gracias por su atención, comprensión y ternura
+} 

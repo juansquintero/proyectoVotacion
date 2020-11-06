@@ -12,9 +12,8 @@ public partial class View_candidatos_admin : System.Web.UI.Page
     {
 
     }
-
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void button_salir(object sender, EventArgs e)
     {
-        Response.Redirect("~/View/admin_menu.aspx");
+        Response.Redirect("~/View/index.aspx");
     }
 }

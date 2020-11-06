@@ -22,8 +22,7 @@ public partial class View_add_votante : System.Web.UI.Page
         int validate_cedula = 0;
         bool comprobation = int.TryParse(cedula, out validate_cedula);
         if (comprobation == true)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
+        {            
             E_user checkUser = new DAO_User().GetVotanteCheck(cedula);
             if (checkUser == null)
             {
@@ -94,12 +93,39 @@ public partial class View_add_votante : System.Web.UI.Page
                 {
                     user.Nacimiento = date_nac;
                 }
-                //De la linea 555 a 76 se valida la edad por medio de una operación matemática
+                //De la linea 71 a 96 se valida la edad por medio de una operación matemática
 
                 string date_exp = Page.Request.Form["date_e"].ToString();
                 if (string.IsNullOrEmpty(date_exp))
                 {
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese la fecha de expedicion de su documento');</script>");
+                }
+                DateTime date_nac2 = Convert.ToDateTime(date_nac);
+                DateTime pruebaMeste2 = Convert.ToDateTime(date_exp);
+                year = pruebaMeste2.Year - date_nac2.Year ;
+                month = pruebaMeste2.Month - date_nac2.Month;
+                day = pruebaMeste2.Day - date_nac2.Day;
+                if (month < 0)
+                {
+                    year--;
+                }
+                else if (month == 0)
+                {
+
+                    if (day <= 0)
+                    {
+                        year--;
+                    }
+                }                
+                if(year<18)
+                {
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                    Response.Redirect("~/View/Form.aspx");
+                }
+                else if(year == 18 && month<1)
+                {
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                    Response.Redirect("~/View/Form.aspx");
                 }
                 else
                 {
@@ -107,14 +133,14 @@ public partial class View_add_votante : System.Web.UI.Page
                 }
 
                 user.Cedula = cedula;
-                user.Voto = false;
+                user.Voto = false;                
                 new DAO_User().save_votantes(user);
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
                 Response.Redirect("~/View/admin_menu.aspx");
             }
             else if(checkUser.Cedula == cedula)
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Es usuario ya existe');</script>");
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Cedula ya Registrada');</script>");
             }
         }
         else
