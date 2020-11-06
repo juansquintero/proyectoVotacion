@@ -11,4 +11,8 @@ public partial class View_votantes_admin : System.Web.UI.Page
     {
 
     }
+    protected void button_salir(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/index.aspx");
+    }
 }
