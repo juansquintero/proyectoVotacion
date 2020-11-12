@@ -34,6 +34,9 @@ public partial class View_admin_menu : System.Web.UI.Page
 
     protected void salir_click(object sender, EventArgs e)
     {
+        Session["validUser"] = null;
+        Session.Abandon();
+        Session.Clear();
         Response.Redirect("~/View/index.aspx");
     }
 }

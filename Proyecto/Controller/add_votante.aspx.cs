@@ -154,6 +154,9 @@ public partial class View_add_votante : System.Web.UI.Page
 
     protected void button_salir(object sender, EventArgs e)
     {
+        Session["validUser"] = null;
+        Session.Abandon();
+        Session.Clear();
         Response.Redirect("~/View/index.aspx");
     }
    
