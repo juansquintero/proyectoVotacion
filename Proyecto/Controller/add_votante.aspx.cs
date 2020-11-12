@@ -26,11 +26,6 @@ public partial class View_add_votante : System.Web.UI.Page
             E_user checkUser = new DAO_User().GetVotanteCheck(cedula);
             if (checkUser == null)
             {
-                //ClientScriptManager cm = this.ClientScript;
-                //E_user user = new E_user();
-
-                //string cedula = Page.Request.Form["cedula"].ToString();
-
                 string user_name = Page.Request.Form["name"].ToString();
                 if (string.IsNullOrEmpty(user_name))
                 {
@@ -87,7 +82,7 @@ public partial class View_add_votante : System.Web.UI.Page
                 if (year < 18)
                 {
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                    Response.Redirect("~/View/Form.aspx");
+                    Response.Redirect("~/View/add_votante.aspx");
                 }
                 else
                 {
@@ -120,12 +115,12 @@ public partial class View_add_votante : System.Web.UI.Page
                 if(year<18)
                 {
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                    Response.Redirect("~/View/Form.aspx");
+                    Response.Redirect("~/View/add_votante.aspx");
                 }
                 else if(year == 18 && month<1)
                 {
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                    Response.Redirect("~/View/Form.aspx");
+                    Response.Redirect("~/View/add_votante.aspx");
                 }
                 else
                 {
