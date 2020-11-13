@@ -71,7 +71,7 @@
 					<span class="focus-input100"></span>
 				</div>
 
-                <div class="wrap-input100 validate-input" data-validate="El partido es requerido">
+                <div class="wrap-input100 validate-input">
 					<span class="label-input100">Foto del candidao</span><br />
                         <asp:FileUpload ID="Foto_Candidato" runat="server" />
 					<span class="focus-input100"></span>

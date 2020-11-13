@@ -15,6 +15,7 @@ public partial class View_add_candidato : System.Web.UI.Page
     {
 
     }
+
     protected void button_enviar(object sender, EventArgs e)
     {
         ClientScriptManager cm = this.ClientScript;
@@ -41,7 +42,8 @@ public partial class View_add_candidato : System.Web.UI.Page
 
                 string fileName = System.IO.Path.GetFileName(Foto_Candidato.PostedFile.FileName);
                 string extension = System.IO.Path.GetExtension(Foto_Candidato.PostedFile.FileName);
-                string saveLocation = Server.MapPath("~\\Perfil_Fotos\\") + DateTime.Now.ToFileTime().ToString() + extension;
+                string saveLocation = "~/Util_Support/Perfil_Fotos/" + DateTime.Now.ToFileTime().ToString() + extension;
+                //Foto_Candidato.PostedFile.SaveAs(Server.MapPath(saveLocation));
 
                 string user_name = Page.Request.Form["name"].ToString();
                 if (string.IsNullOrEmpty(user_name))
@@ -106,6 +108,7 @@ public partial class View_add_candidato : System.Web.UI.Page
                     if (user.Foto == " ")
                     {
                         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No ha subido ninguna foto');</script>");
+                        user.Foto = Server.MapPath("~\\Util_Support\\Perfil_Fotos\\default_profile.jpg");
                         return;
                     }
                 }
