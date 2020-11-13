@@ -14,6 +14,7 @@ public class E_candidato
     private string apellido;
     private string cc;
     private string partido;
+    private string foto;
 
     [Key]
     [Column("id")]
@@ -26,4 +27,6 @@ public class E_candidato
     public string Cc { get => cc; set => cc = value; }
     [Column("partido")]
     public string Partido { get => partido; set => partido = value; }
+    [Column("foto")]
+    public string Foto { get => foto; set => foto = value; }
 }

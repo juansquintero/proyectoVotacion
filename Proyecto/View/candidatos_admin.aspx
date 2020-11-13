@@ -15,6 +15,7 @@
             <asp:GridView ID="datagrid" runat="server" CssClass="mydatagrid" PagerStyle-CssClass="pager"
                 HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="ODS_Candidato" Width="100%">
                 <Columns>
+                    <asp:ImageField DataImageUrlField="value" ControlStyle-Width="100" ControlStyle-Height="100" HeaderText="Candidato" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                     <asp:BoundField DataField="Cc" HeaderText="Cedula" SortExpression="Cc" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -38,6 +39,10 @@ public partial class View_add_candidato : System.Web.UI.Page
                 //E_conteo user2 = new E_conteo();
                 //string cedula = Page.Request.Form["cedula"].ToString();
 
+                string fileName = System.IO.Path.GetFileName(Foto_Candidato.PostedFile.FileName);
+                string extension = System.IO.Path.GetExtension(Foto_Candidato.PostedFile.FileName);
+                string saveLocation = Server.MapPath("~\\Perfil_Fotos\\") + DateTime.Now.ToFileTime().ToString() + extension;
+
                 string user_name = Page.Request.Form["name"].ToString();
                 if (string.IsNullOrEmpty(user_name))
                 {
@@ -69,6 +74,44 @@ public partial class View_add_candidato : System.Web.UI.Page
                 {
                     user.Partido = user_partido;
                     user2.Partido = user_partido;
+                }
+
+                if (!(extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png")))
+                {
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo de archivo no valido o no subio archivo');</script>");
+                    return;
+                } 
+
+                if (System.IO.File.Exists(saveLocation))
+                {
+                    File.Delete(saveLocation);
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe un archivo en el servidor con ese nombre');</script>");
+                    return;
+                }
+
+                try
+                {
+                    Foto_Candidato.PostedFile.SaveAs(saveLocation);
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
+                    user.Foto = saveLocation;
+                }
+                catch (Exception exc)
+                {
+                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Error: ');</script>");
+                    return;
+                }
+
+                try
+                {
+                    if (user.Foto == " ")
+                    {
+                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No ha subido ninguna foto');</script>");
+                        return;
+                    }
+                }
+                catch (NullReferenceException)
+                {
+
                 }
 
                 user.Cc = cedula;

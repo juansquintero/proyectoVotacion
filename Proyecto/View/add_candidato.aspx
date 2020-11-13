@@ -71,6 +71,12 @@
 					<span class="focus-input100"></span>
 				</div>
 
+                <div class="wrap-input100 validate-input" data-validate="El partido es requerido">
+					<span class="label-input100">Foto del candidao</span><br />
+                        <asp:FileUpload ID="Foto_Candidato" runat="server" />
+					<span class="focus-input100"></span>
+				</div>
+
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
@@ -147,7 +153,9 @@
 
         gtag('config', 'UA-23581568-13');
     </script>
+<!--===============================================================================================-->
 
+<!--===============================================================================================-->
 </body>
 </html>
 
