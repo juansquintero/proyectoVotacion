@@ -71,9 +71,16 @@
                     <div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>							
+                            <button id="Button5" runat="server" onserverclick="escrutinio" class="login100-form-btn" type="button">
+								Escrutinio</button>
+						</div></div>
+                    <div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>							
                             <button id="Button3" runat="server" onserverclick="salir_click" class="login100-form-btn" type="button">
 								Salir</button>
 						</div></div>
+                    
 				</form>
 			</div>
 		</div>

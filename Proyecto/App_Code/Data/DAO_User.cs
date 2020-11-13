@@ -137,6 +137,14 @@ public class DAO_User
         }
     }
 
+    public List<E_conteo> GetEscrutinio()
+    {
+        using (var db = new Mapping())
+        {
+            return db.conteo.ToList();
+        }
+    }
+
     //public bool validarCedula (string cedula) { 
     
     //    using (var db = new Mapping())
