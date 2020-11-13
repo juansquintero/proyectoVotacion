@@ -152,7 +152,6 @@ public partial class View_add_votante : System.Web.UI.Page
         Session["validUser"] = null;
         Session.Abandon();
         Session.Clear();
-        Response.Redirect("~/View/index.aspx");
-    }
-   
+        Response.Redirect("~/View/admin_menu.aspx");
+    }   
 }
