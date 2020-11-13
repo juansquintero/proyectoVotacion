@@ -35,7 +35,6 @@ public partial class View_add_votante : System.Web.UI.Page
                 {
                     user.User_name = user_name;
                 }
-
                 string user_lastname = Page.Request.Form["lastname"].ToString();
                 if (string.IsNullOrEmpty(user_lastname))
                 {
@@ -45,7 +44,6 @@ public partial class View_add_votante : System.Web.UI.Page
                 {
                     user.User_lastname = user_lastname;
                 }
-
                 string user_mail = Page.Request.Form["email"].ToString();
                 if (string.IsNullOrEmpty(user_mail))
                 {
@@ -55,13 +53,11 @@ public partial class View_add_votante : System.Web.UI.Page
                 {
                     user.Mail = user_mail;
                 }
-
                 string date_nac = Page.Request.Form["date_nac"].ToString();
                 if (string.IsNullOrEmpty(date_nac))
                 {
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
                 }
-
                 DateTime date_now = DateTime.Now;
                 DateTime pruebaMeste = Convert.ToDateTime(date_nac);
                 int year = date_now.Year - pruebaMeste.Year;
@@ -143,15 +139,12 @@ public partial class View_add_votante : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
             Response.Redirect("~/View/admin_menu.aspx");
         }
-
-        
     }
-
     protected void button_salir(object sender, EventArgs e)
     {
         Session["validUser"] = null;
         Session.Abandon();
         Session.Clear();
         Response.Redirect("~/View/admin_menu.aspx");
-    }   
+    }
 }

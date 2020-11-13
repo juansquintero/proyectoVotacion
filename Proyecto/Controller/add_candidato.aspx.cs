@@ -32,7 +32,7 @@ public partial class View_add_candidato : System.Web.UI.Page
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
             E_candidato checkCandidato = new DAO_User().GetCandidatoCheck(cedula);
-            if (checkCandidato.Cc == null)
+            if (checkCandidato == null)
             {
                 //ClientScriptManager cm = this.ClientScript;
                 //E_candidato user = new E_candidato();
