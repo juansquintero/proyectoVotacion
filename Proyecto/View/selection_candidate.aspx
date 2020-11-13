@@ -44,6 +44,7 @@
          <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
          <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
          <asp:BoundField DataField="Partido" HeaderText="Partido" SortExpression="Partido" />
+         <asp:ImageField DataImageUrlField="Foto" ControlStyle-Width="100" ControlStyle-Height="100" HeaderText="Foto" />
          <asp:TemplateField>
             <ItemTemplate>
                 <asp:RadioButton ID="rdbauthid" runat="server" onclick="javascript:CheckOtherIsCheckedByGVID(this);" /> 
