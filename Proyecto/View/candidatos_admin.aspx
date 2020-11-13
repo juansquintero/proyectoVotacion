@@ -20,7 +20,9 @@
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                     <asp:BoundField DataField="Cc" HeaderText="Cc" SortExpression="Cc" />
                     <asp:BoundField DataField="Partido" HeaderText="Partido" SortExpression="Partido" />
-                    <asp:ImageField DataImageUrlField="Foto" ControlStyle-Width="100" ControlStyle-Height="100" HeaderText="Foto" />
+                    <asp:ImageField DataImageUrlField="Foto" ControlStyle-Width="100" ControlStyle-Height="100" HeaderText="Foto" >
+<ControlStyle Height="100px" Width="100px"></ControlStyle>
+                    </asp:ImageField>
                 </Columns>
                 <HeaderStyle CssClass="header"></HeaderStyle>
 

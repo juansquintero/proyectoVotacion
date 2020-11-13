@@ -42,7 +42,8 @@ public partial class View_add_candidato : System.Web.UI.Page
 
                 string fileName = System.IO.Path.GetFileName(Foto_Candidato.PostedFile.FileName);
                 string extension = System.IO.Path.GetExtension(Foto_Candidato.PostedFile.FileName);
-                string saveLocation = Server.MapPath("~\\Util_Support\\Perfil_Fotos\\") + DateTime.Now.ToFileTime().ToString() + extension;
+                string saveLocation = "~/Util_Support/Perfil_Fotos/" + DateTime.Now.ToFileTime().ToString() + extension;
+                //Foto_Candidato.PostedFile.SaveAs(Server.MapPath(saveLocation));
 
                 string user_name = Page.Request.Form["name"].ToString();
                 if (string.IsNullOrEmpty(user_name))
