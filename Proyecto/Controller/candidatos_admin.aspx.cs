@@ -16,4 +16,9 @@ public partial class View_candidatos_admin : System.Web.UI.Page
     {
         Response.Redirect("~/View/admin_menu.aspx");
     }
+
+    protected void datagrid_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

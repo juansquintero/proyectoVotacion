@@ -21,6 +21,7 @@
                     <asp:BoundField DataField="Expe" HeaderText="Fecha de Expedición" SortExpression="Expe" />
                     <asp:BoundField DataField="Nacimiento" HeaderText="Fecha de nacimiento" SortExpression="Nacimiento" />
                     <asp:BoundField DataField="Mail" HeaderText="Correo" SortExpression="Mail" />
+                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 </Columns>
                 <HeaderStyle CssClass="header"></HeaderStyle>
 
@@ -28,7 +29,7 @@
 
                 <RowStyle CssClass="rows"></RowStyle>
             </asp:GridView>
-            <asp:ObjectDataSource ID="ODS_Votatantes" runat="server" SelectMethod="GetVotantes" TypeName="DAO_User"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_Votatantes" runat="server" SelectMethod="GetVotantes" TypeName="DAO_User" DataObjectTypeName="E_user" DeleteMethod="deleteUser" UpdateMethod="editUser"></asp:ObjectDataSource>
         </div>
         <div style="margin-top: 15px" class="wrap-contact100-form-btn">
             <div class="contact100-form-bgbtn"></div>

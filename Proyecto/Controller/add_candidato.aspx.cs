@@ -31,7 +31,7 @@ public partial class View_add_candidato : System.Web.UI.Page
         bool comprobation = int.TryParse(cedula, out validate_cedula);
         if (comprobation == true)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('No sirve la cedula ');</script>");
+            
             E_candidato checkCandidato = new DAO_User().GetCandidatoCheck(cedula);
             if (checkCandidato == null)
             {
@@ -93,7 +93,7 @@ public partial class View_add_candidato : System.Web.UI.Page
 
                 try
                 {
-                    Foto_Candidato.PostedFile.SaveAs(saveLocation);
+                    Foto_Candidato.PostedFile.SaveAs(Server.MapPath(saveLocation));
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo ha sido cargado');</script>");
                     user.Foto = saveLocation;
                 }

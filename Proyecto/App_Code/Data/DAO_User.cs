@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -146,10 +147,66 @@ public class DAO_User
     }
 
     //public bool validarCedula (string cedula) { 
-    
+
     //    using (var db = new Mapping())
     //    {
     //        return db.votantes.Any(x => x.Cedula.Equals(cedula));
     //    }
     //} por favor colocar en github que ya se hizo para no repetir metodos como pendejo, muvcahs gracias por su atención, comprensión y ternura
-} 
+
+    public void deleteCandidato(E_candidato e_Candidato)
+    {
+        using (var db = new Mapping())
+        {
+            db.candidato.Attach(e_Candidato);
+            var entry = db.Entry(e_Candidato);
+            entry.State = EntityState.Deleted;
+            db.SaveChanges();
+        }
+    }
+
+    public void editCandidato(E_candidato e_Candidato)
+    {
+        using (var db = new Mapping())
+        {
+            E_candidato e_candidato2 = db.candidato.Where(x => x.Id == e_Candidato.Id).FirstOrDefault();
+            e_candidato2.Nombre = e_Candidato.Nombre;
+            e_candidato2.Apellido = e_Candidato.Apellido;
+            e_candidato2.Partido = e_Candidato.Partido;
+            e_candidato2.Cc = e_Candidato.Cc;
+            db.candidato.Attach(e_candidato2);
+            var entry = db.Entry(e_candidato2);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+
+    public void deleteUser(E_user e_User)
+    {
+        using (var db = new Mapping())
+        {
+            db.votantes.Attach(e_User);
+            var entry = db.Entry(e_User);
+            entry.State = EntityState.Deleted;
+            db.SaveChanges();
+        }
+    }
+
+    public void editUser(E_user e_User)
+    {
+        using (var db = new Mapping())
+        {
+            E_user e_user2 = db.votantes.Where(x => x.Id == e_User.Id).FirstOrDefault();
+            e_user2.User_name = e_User.User_name;
+            e_user2.User_lastname = e_User.User_lastname;
+            e_user2.Cedula = e_User.Cedula;
+            e_user2.Mail = e_User.Mail;
+            e_user2.Nacimiento = e_User.Nacimiento;
+            e_user2.Expe = e_User.Expe;
+            db.votantes.Attach(e_user2);
+            var entry = db.Entry(e_user2);
+            entry.State = EntityState.Modified;
+            db.SaveChanges();
+        }
+    }
+}

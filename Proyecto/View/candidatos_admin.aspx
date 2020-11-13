@@ -13,7 +13,7 @@
         </div>
         <div>
             <asp:GridView ID="datagrid" runat="server" CssClass="mydatagrid" PagerStyle-CssClass="pager"
-                HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="ODS_Candidato" Width="100%">
+                HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="ODS_Candidato" Width="100%" DataKeyNames="Id" OnSelectedIndexChanged="datagrid_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -23,6 +23,7 @@
                     <asp:ImageField DataImageUrlField="Foto" ControlStyle-Width="100" ControlStyle-Height="100" HeaderText="Foto" >
 <ControlStyle Height="100px" Width="100px"></ControlStyle>
                     </asp:ImageField>
+                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 </Columns>
                 <HeaderStyle CssClass="header"></HeaderStyle>
 
@@ -30,7 +31,7 @@
 
                 <RowStyle CssClass="rows"></RowStyle>
             </asp:GridView>
-            <asp:ObjectDataSource ID="ODS_Candidato" runat="server" SelectMethod="GetCandidato" TypeName="DAO_User"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_Candidato" runat="server" SelectMethod="GetCandidato"  TypeName="DAO_User" DataObjectTypeName="E_candidato" DeleteMethod="deleteCandidato" UpdateMethod="editCandidato"></asp:ObjectDataSource>
         </div>
         <div style="margin-top: 15px" class="wrap-contact100-form-btn">
             <div class="contact100-form-bgbtn"></div>
