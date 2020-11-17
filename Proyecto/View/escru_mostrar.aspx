@@ -35,6 +35,7 @@
                 <span>Salir								
                 </span>
             </button>
+            <asp:Button ID="Expo" runat="server" OnClick="Expo_Click" Text="Exportar" />
         </div>
     </form>
 </body>
