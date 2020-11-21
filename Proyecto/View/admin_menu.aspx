@@ -77,9 +77,17 @@
                     <div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>							
+                            <button id="Button4" runat="server" onserverclick="vaciar_tablas" class="login100-form-btn" type="button">
+								Nueva Votacion</button>
+						</div></div>                    
+                    <div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>							
                             <button id="Button3" runat="server" onserverclick="salir_click" class="login100-form-btn" type="button">
 								Salir</button>
 						</div></div>
+
+
                     
 				</form>
 			</div>

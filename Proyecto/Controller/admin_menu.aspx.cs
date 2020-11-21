@@ -37,6 +37,11 @@ public partial class View_admin_menu : System.Web.UI.Page
         Response.Redirect("~/View/escru_mostrar.aspx");
     }
 
+    protected void vaciar_tablas(object sender, EventArgs e)
+    {
+        new DAO_User().truncateTables();
+    }
+
     protected void salir_click(object sender, EventArgs e)
     {
         Session["validUser"] = null;

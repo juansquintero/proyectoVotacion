@@ -60,9 +60,9 @@
  </asp:GridView>
      <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetCandidato" TypeName="DAO_User"></asp:ObjectDataSource>
  </div>
-     <div align="center">
+     <div align="center" id="50px">
 
-         <asp:Button ID="Button1" runat="server" Text="VOTAR!!" OnClick="Button1_Click1" BackColor="#3399FF" BorderColor="Blue" BorderStyle="Outset" Height="80px" Width="280px" />
+         <asp:Button ID="Button1" runat="server" Text="VOTAR!!" OnClick="Button1_Click1" class="btncss" Width="180px" Height="60px" />
 
          <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
 

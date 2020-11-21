@@ -209,4 +209,44 @@ public class DAO_User
             db.SaveChanges();
         }
     }
+
+    public void truncateTables()
+    {
+        using (var db = new Mapping())
+        {
+            List<E_candidato> e_Candidatos = db.candidato.ToList();
+            List<E_conteo> e_Conteo = db.conteo.ToList();
+            List<E_user> e_User = db.votantes.ToList();
+            List<E_registro_votado> e_Registro_s = db.registro_votado.ToList();
+            if (e_Candidatos.Count > 0)
+            {
+                foreach (var candi in e_Candidatos)
+                {
+                    db.candidato.Remove(candi);
+                }
+            }
+            if (e_Conteo.Count > 0)
+            {
+                foreach (var cont in e_Conteo)
+                {
+                    db.conteo.Remove(cont);
+                }
+            }
+            if (e_User.Count > 0)
+            {
+                foreach (var vota in e_User)
+                {
+                    db.votantes.Remove(vota);
+                }
+            }
+            if (e_Registro_s.Count > 0)
+            {
+                foreach (var reg in e_Registro_s)
+                {
+                    db.registro_votado.Remove(reg);
+                }
+            }
+            db.SaveChanges();
+        }
+    }
 }

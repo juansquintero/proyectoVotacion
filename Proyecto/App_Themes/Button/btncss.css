@@ -1,0 +1,16 @@
+﻿
+.btncss {
+    background-color: #666699; /* Green */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border: none;
+}
+
+    .btn3:hover {
+        box-shadow: 0 4px 6px 0 rgba(0,0,0,0.17),0 6px 8px 0 rgba(0,0,0,0.18);
+        background-color: #9999FF;
+    }

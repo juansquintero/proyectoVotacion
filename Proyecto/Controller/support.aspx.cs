@@ -23,4 +23,9 @@ public partial class View_support : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Si ticket ha sido enviado, pronto tendra respuesta');</script>");
     }
+
+    protected void salir_menu(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/index.aspx");
+    }
 }

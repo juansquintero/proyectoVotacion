@@ -5,6 +5,7 @@
 <head runat="server">
     <title>Votantes admin</title>
     <link href="../App_Themes/DataGridCandidates/dataGrid.css" rel="Stylesheet" type="text/css" />
+    <link href="../App_Themes/Button/btncss.css" rel="Stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,11 +32,11 @@
         </div>
         <div align="center" style="margin-top: 15px" class="wrap-contact100-form-btn">
             <div class="contact100-form-bgbtn"></div>
-            <button runat="server" onserverclick="button_salir" class="contact100-form-btn">
+            <button runat="server" onserverclick="button_salir" class="btncss">
                 <span>Salir								
                 </span>
             </button>
-            <asp:Button ID="Expo" runat="server" OnClick="Expo_Click" Text="Exportar" />
+            <asp:Button ID="Expo" runat="server" OnClick="Expo_Click" Text="Exportar" class="btncss" />
         </div>
     </form>
 </body>
