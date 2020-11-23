@@ -23,9 +23,9 @@ public partial class View_add_votante : System.Web.UI.Page
         int validate_cedula = 0;
         if (largoCedula <6 || largoCedula>10)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('el tamaño de la cédula es inconsistente');</script>");
-
-            Response.Redirect("~/View/add_votante.aspx");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('el tamaño de la cédula es inconsistente');</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('El tamaño de la cédula es inconsistente');window.open('add_votante.aspx','_self');", true);
+            //Response.Redirect("~/View/add_votante.aspx");
         }
         else
         {
