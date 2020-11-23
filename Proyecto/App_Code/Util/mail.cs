@@ -22,29 +22,29 @@ public class mail
         try
         {
 
-            var Emailtemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "Template\\mailer.html"));
-            var strBody = string.Format(Emailtemplate.ReadToEnd(), user_name);
-            Emailtemplate.Close(); Emailtemplate.Dispose(); Emailtemplate = null;
+            var EmailTemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "\\Template\\mailer.html"));
+            var strBody = string.Format(EmailTemplate.ReadToEnd(), user_name);
+            EmailTemplate.Close(); EmailTemplate.Dispose(); EmailTemplate = null;
 
 
             strBody = strBody.Replace("#TOKEN#", user_name);
-            MailMessage mail = new MailMessage();
+            MailMessage mailM = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mail.From = new MailAddress("soporte@gmail.com", "Soporte");
+            mailM.From = new MailAddress("soporte@gmail.com", "Soporte");
             SmtpServer.Host = "smtp.gmail.com";
-            mail.Subject = "Soporte Votacion";
-            mail.Body = strBody;
-            mail.To.Add(correoDestino);
-            mail.IsBodyHtml = true;
-            mail.Priority = MailPriority.Normal;
+            mailM.Subject = "Soporte Votacion";
+            mailM.Body = strBody;
+            mailM.To.Add(correoDestino);
+            mailM.IsBodyHtml = true;
+            mailM.Priority = MailPriority.Normal;
             SmtpServer.Port = 587; 
-            SmtpServer.Credentials = new System.Net.NetworkCredential("is20pasaportes@gmail.com", "tueomzhsfsvorbfq");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("votacion.proyecto2020@gmail.com", "negrorico2020");
             SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mail);
+            SmtpServer.Send(mailM);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-
+            throw;
         }
     }
 }
