@@ -163,7 +163,7 @@ public class DAO_User
     {
         using (var db = new Mapping())
         {
-            E_candidato e_candidato2 = db.candidato.Where(x => x.Id == e_Candidato.Id).FirstOrDefault();
+            var e_candidato2 = db.candidato.Where(x => x.Id == e_Candidato.Id).FirstOrDefault();
             E_audit_candidato audit_candidato = new E_audit_candidato();
 
             audit_candidato.Nombre_old = e_candidato2.Nombre;
