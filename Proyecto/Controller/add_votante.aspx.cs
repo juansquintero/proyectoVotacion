@@ -86,8 +86,9 @@ public partial class View_add_votante : System.Web.UI.Page
                     }
                     if (year < 18)
                     {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                        Response.Redirect("~/View/add_votante.aspx");
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
+                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                        //Response.Redirect("~/View/add_votante.aspx");
                     }
                     else
                     {
@@ -119,13 +120,15 @@ public partial class View_add_votante : System.Web.UI.Page
                     }
                     if (year < 18)
                     {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                        Response.Redirect("~/View/add_votante.aspx");
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
+                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                        //Response.Redirect("~/View/add_votante.aspx");
                     }
                     else if (year == 18 && month < 1)
                     {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                        Response.Redirect("~/View/add_votante.aspx");
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
+                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                        //Response.Redirect("~/View/add_votante.aspx");
                     }
                     else
                     {
@@ -135,8 +138,9 @@ public partial class View_add_votante : System.Web.UI.Page
                     user.Cedula = cedula;
                     user.Voto = false;
                     new DAO_User().save_votantes(user);
-                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
-                    Response.Redirect("~/View/admin_menu.aspx");
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ha sido registrado');window.open('admin_menu.aspx','_self');", true);
+                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
+                    //Response.Redirect("~/View/admin_menu.aspx");
                 }
                 else if (checkUser.Cedula == cedula)
                 {
@@ -145,8 +149,9 @@ public partial class View_add_votante : System.Web.UI.Page
             }
             else
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
-                Response.Redirect("~/View/admin_menu.aspx");
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Digite su cedula');window.open('add_votante.aspx','_self');", true);
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
+                //Response.Redirect("~/View/admin_menu.aspx");
             }
         }
         
