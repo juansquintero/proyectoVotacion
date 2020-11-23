@@ -94,7 +94,7 @@ public partial class View_add_candidato : System.Web.UI.Page
                         return;
                     }
 
-                    if (Foto_Candidato.PostedFile.ContentLength <= 5000000)
+                    if (Foto_Candidato.PostedFile.ContentLength <= 15000000)
                     {
                         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tamaño maximo de 5mb');</script>");
                         return;
