@@ -68,7 +68,7 @@
 								Olvido
 							</span>
 
-							<a href="#" class="txt2">
+							<a href="support.aspx" class="txt2">
 								¿Usuario / Codigo?
 							</a>
 						</li>
