@@ -62,79 +62,87 @@ public partial class View_add_votante : System.Web.UI.Page
                     {
                         user.Mail = user_mail;
                     }
+
                     string date_nac = Page.Request.Form["date_nac"].ToString();
                     if (string.IsNullOrEmpty(date_nac))
                     {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                    }
-                    DateTime date_now = DateTime.Now;
-                    DateTime pruebaMeste = Convert.ToDateTime(date_nac);
-                    int year = date_now.Year - pruebaMeste.Year;
-                    int month = date_now.Month - pruebaMeste.Month;
-                    int day = date_now.Day - pruebaMeste.Day;
-                    if (month < 0)
-                    {
-                        year--;
-                    }
-                    else if (month == 0)
-                    {
-
-                        if (day <= 0)
-                        {
-                            year--;
-                        }
-                    }
-                    if (year < 18)
-                    {
                         ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
                         //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                        //Response.Redirect("~/View/add_votante.aspx");
                     }
                     else
                     {
-                        user.Nacimiento = date_nac;
+                        DateTime date_now = DateTime.Now;
+                        DateTime pruebaMeste = Convert.ToDateTime(date_nac);
+                        int year = date_now.Year - pruebaMeste.Year;
+                        int month = date_now.Month - pruebaMeste.Month;
+                        int day = date_now.Day - pruebaMeste.Day;
+                        if (month < 0)
+                        {
+                            year--;
+                        }
+                        else if (month == 0)
+                        {
+
+                            if (day <= 0)
+                            {
+                                year--;
+                            }
+                        }
+                        if (year < 18)
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Es menor');window.open('add_votante.aspx','_self');", true);
+                            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                            //Response.Redirect("~/View/add_votante.aspx");
+                        }
+                        else
+                        {
+                            user.Nacimiento = date_nac;
+                        }
+                        //De la linea 71 a 96 se valida la edad por medio de una operación matemática
                     }
-                    //De la linea 71 a 96 se valida la edad por medio de una operación matemática
 
                     string date_exp = Page.Request.Form["date_e"].ToString();
                     if (string.IsNullOrEmpty(date_exp))
                     {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese la fecha de expedicion de su documento');</script>");
-                    }
-                    DateTime date_nac2 = Convert.ToDateTime(date_nac);
-                    DateTime pruebaMeste2 = Convert.ToDateTime(date_exp);
-                    year = pruebaMeste2.Year - date_nac2.Year;
-                    month = pruebaMeste2.Month - date_nac2.Month;
-                    day = pruebaMeste2.Day - date_nac2.Day;
-                    if (month < 0)
-                    {
-                        year--;
-                    }
-                    else if (month == 0)
-                    {
-
-                        if (day <= 0)
-                        {
-                            year--;
-                        }
-                    }
-                    if (year < 18)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
-                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                        //Response.Redirect("~/View/add_votante.aspx");
-                    }
-                    else if (year == 18 && month < 1)
-                    {
-                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
-                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
-                        //Response.Redirect("~/View/add_votante.aspx");
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de expedicion');window.open('add_votante.aspx','_self');", true);
                     }
                     else
                     {
-                        user.Expe = date_exp;
-                    }
+                        DateTime date_nac2 = Convert.ToDateTime(date_nac);
+                        DateTime pruebaMeste2 = Convert.ToDateTime(date_exp);
+                        int year = pruebaMeste2.Year - date_nac2.Year;
+                        int month = pruebaMeste2.Month - date_nac2.Month;
+                        int day = pruebaMeste2.Day - date_nac2.Day;
+                        if (month < 0)
+                        {
+                            year--;
+                        }
+                        else if (month == 0)
+                        {
 
+                            if (day <= 0)
+                            {
+                                year--;
+                            }
+                        }
+                        if (year < 18)
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No es posible');window.open('add_votante.aspx','_self');", true);
+                            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                            //Response.Redirect("~/View/add_votante.aspx");
+                        }
+                        else if (year == 18 && month < 1)
+                        {
+                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No es posible');window.open('add_votante.aspx','_self');", true);
+                            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
+                            //Response.Redirect("~/View/add_votante.aspx");
+                        }
+                        else
+                        {
+                            user.Expe = date_exp;
+                        }
+                    }
+                    
                     user.Cedula = cedula;
                     user.Voto = false;
                     new DAO_User().save_votantes(user);

@@ -17,6 +17,7 @@ public partial class View_admin_new : System.Web.UI.Page
         ClientScriptManager cm = this.ClientScript;
 
         string user_name = Page.Request.Form["username"].ToString();
+        string mail = Page.Request.Form["mail"].ToString();
 
         E_admin ps = new DAO_User().getAdminCheck(user_name);
 
@@ -35,7 +36,7 @@ public partial class View_admin_new : System.Web.UI.Page
                 euser.User_code_admin = r.Next(10000, 99999).ToString();
 
                 new DAO_User().save_admin(euser);
-                //Pendiente correo para confirmar contraseña de admin
+                new mail().enviarCorreoAdmin(mail, euser.User_code_admin);                
             }
         }
         else if (ps.User_name_admin == user_name)

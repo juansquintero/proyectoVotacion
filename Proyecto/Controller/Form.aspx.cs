@@ -70,29 +70,31 @@ public partial class View_Form : System.Web.UI.Page
         }
         else
         {
-            user.Nacimiento = date_nac;
-        }
-
-        DateTime date_now = DateTime.Now;
-        DateTime pruebaMeste = Convert.ToDateTime(date_nac);
-        int year = date_now.Year - pruebaMeste.Year;
-        int month = date_now.Month - pruebaMeste.Month;
-        int day = date_now.Day - pruebaMeste.Day;
-        if (month < 0)
-        {
-            year--;
-        }
-        else if (month == 0)
-        {
-            //day <= 0 ? year : year - 1;
-            if (day <= 0)
+            DateTime date_now = DateTime.Now;
+            DateTime pruebaMeste = Convert.ToDateTime(date_nac);
+            int year = date_now.Year - pruebaMeste.Year;
+            int month = date_now.Month - pruebaMeste.Month;
+            int day = date_now.Day - pruebaMeste.Day;
+            if (month < 0)
             {
                 year--;
             }
-        }
-        if(year<18)
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Menor de edad');</script>");
+            else if (month == 0)
+            {
+                //day <= 0 ? year : year - 1;
+                if (day <= 0)
+                {
+                    year--;
+                }
+            }
+            if (year < 18)
+            {
+                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usuario Menor de edad');</script>");
+            }
+            else
+            {
+                user.Nacimiento = date_nac;
+            }
         }
 
         string date_exp = Page.Request.Form["date_e"].ToString();
@@ -118,7 +120,7 @@ public partial class View_Form : System.Web.UI.Page
         }
         else
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Bienvenido');window.open('selection_candidate.aspx','_self');", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Bienvenido, por favor vote a conciencia');window.open('selection_candidate.aspx','_self');", true);
             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvenido');</script>");
             //Response.Redirect("~/View/selection_candidate.aspx");
         }
