@@ -45,12 +45,13 @@ public partial class View_add_votante : System.Web.UI.Page
                         correoeoeo = true;
                     if (string.IsNullOrEmpty(user_mail) || correoeoeo == false)
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese un correo valido');window.open('add_votante.aspx','_self');", true);
                     }
                     else
                     {
                         user.Mail = user_mail;
                     }
+
                     string user_name = Page.Request.Form["name"].ToString();
                     if (string.IsNullOrEmpty(user_name))
                     {
@@ -148,13 +149,19 @@ public partial class View_add_votante : System.Web.UI.Page
                             user.Expe = date_exp;
                         }
                     }
-
-                    user.Cedula = cedula;
-                    user.Voto = false;
-                    new DAO_User().save_votantes(user);
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ha sido registrado');window.open('admin_menu.aspx','_self');", true);
-                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
-                    //Response.Redirect("~/View/admin_menu.aspx");
+                    if(correoeoeo == false)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Su correo no es usabl');window.open('add_votante.aspx','_self');", true);
+                    }
+                    else
+                    {
+                        user.Cedula = cedula;
+                        user.Voto = false;
+                        new DAO_User().save_votantes(user);
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ha sido registrado');window.open('admin_menu.aspx','_self');", true);
+                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
+                        //Response.Redirect("~/View/admin_menu.aspx");
+                    }
                 }
                 else if (checkUser.Cedula == cedula)
                 {
@@ -172,9 +179,6 @@ public partial class View_add_votante : System.Web.UI.Page
     }
     protected void button_salir(object sender, EventArgs e)
     {
-        Session["validUser"] = null;
-        Session.Abandon();
-        Session.Clear();
         Response.Redirect("~/View/admin_menu.aspx");
     }
 }
