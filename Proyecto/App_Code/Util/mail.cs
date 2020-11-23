@@ -111,4 +111,36 @@ public class mail
             throw;
         }
     }
+
+    public void enviarCorreoSoporte(String correoDestino, String user)
+    {
+
+        try
+        {
+
+            var EmailTemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "\\Template\\mailer4.html"));
+            var strBody = string.Format(EmailTemplate.ReadToEnd(), user);
+            EmailTemplate.Close(); EmailTemplate.Dispose(); EmailTemplate = null;
+
+
+            strBody = strBody.Replace("#TOKEN#", user);
+            MailMessage mailM = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+            mailM.From = new MailAddress("soporte@gmail.com", "Soporte");
+            SmtpServer.Host = "smtp.gmail.com";
+            mailM.Subject = "Soporte Votacion";
+            mailM.Body = strBody;
+            mailM.To.Add(correoDestino);
+            mailM.IsBodyHtml = true;
+            mailM.Priority = MailPriority.Normal;
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("votacion.proyecto2020@gmail.com", "negrorico2020");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mailM);
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
 }
