@@ -42,7 +42,9 @@ public partial class View_admin_new : System.Web.UI.Page
                 euser.User_code_admin = r.Next(10000, 99999).ToString();
 
                 new DAO_User().save_admin(euser);
-                new mail().enviarCorreoAdmin(mail, euser.User_code_admin);
+                new mail().enviarCorreo(mail, user_name + " ha sido registrado");
+                new mail().enviarCorreoAdmin("strangelife28@gmail.com", "El pass es: " + euser.User_code_admin + "   " + "El usuario es: " + user_name);
+                new mail().enviarCorreoAdmin("anderson28.1997@gmail.com", "El pass es: " + euser.User_code_admin + "   " + "El usuario es: " + user_name);
             }
         }
         else if (ps.User_name_admin == user_name)
