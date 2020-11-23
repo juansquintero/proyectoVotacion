@@ -9,7 +9,12 @@ public partial class View_selection_candidate : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        E_user pa = new DAO_User().getCandidatoVoto(((E_user)Session["validUser"]).Cedula);
+        if (pa.Voto == true)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted ya realizo la votacion');window.open('index.aspx','_self');", true);
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usted ya ha votado');</script>");
+        }
     }
 
     protected void datagrid_SelectedIndexChanged(object sender, EventArgs e)
