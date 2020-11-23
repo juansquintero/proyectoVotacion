@@ -39,6 +39,18 @@ public partial class View_add_votante : System.Web.UI.Page
                 E_user checkUser = new DAO_User().GetVotanteCheck(cedula);
                 if (checkUser == null)
                 {
+                    string user_mail = Page.Request.Form["email"].ToString();
+                    bool correoeoeo = false;
+                    if (user_mail.Contains("@hotmail") || user_mail.Contains("@gmail") || user_mail.Contains("@outlook") || user_mail.Contains("@yahoo"))
+                        correoeoeo = true;
+                    if (string.IsNullOrEmpty(user_mail) || correoeoeo == false)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su fecha de nacimiento');window.open('add_votante.aspx','_self');", true);
+                    }
+                    else
+                    {
+                        user.Mail = user_mail;
+                    }
                     string user_name = Page.Request.Form["name"].ToString();
                     if (string.IsNullOrEmpty(user_name))
                     {
@@ -57,16 +69,6 @@ public partial class View_add_votante : System.Web.UI.Page
                     {
                         user.User_lastname = user_lastname;
                     }
-                    string user_mail = Page.Request.Form["email"].ToString();
-                    if (string.IsNullOrEmpty(user_mail))
-                    {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su email');</script>");
-                    }
-                    else
-                    {
-                        user.Mail = user_mail;
-                    }
-
                     string date_nac = Page.Request.Form["date_nac"].ToString();
                     if (string.IsNullOrEmpty(date_nac))
                     {
