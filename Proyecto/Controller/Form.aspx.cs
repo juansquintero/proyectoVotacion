@@ -60,7 +60,7 @@ public partial class View_Form : System.Web.UI.Page
         }
         else
         {
-
+            user.Mail = user_mail;
         }
 
         string date_nac = Page.Request.Form["date_nac"].ToString();

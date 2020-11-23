@@ -50,7 +50,8 @@ public partial class View_selection_candidate : System.Web.UI.Page
                     user.Apellido = ((E_user)Session["validUser"]).User_lastname;
                     user.Cc = ((E_user)Session["validUser"]).Cedula;
                     user.Voto = true;
-                    new mail().enviarCorreoVotado(((E_user)Session["validUser"]).Mail, ((E_user)Session["validUser"]).User_name);
+                    var mail = ((E_user)Session["validUser"]).Mail;
+                    new mail().enviarCorreoVotado(mail, user.Nombre);
                 }
 
                 new DAO_User().save_votado(user);
