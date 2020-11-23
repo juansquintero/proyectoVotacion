@@ -13,7 +13,7 @@ public partial class View_candidatos_admin : System.Web.UI.Page
         var Logged = Session["validUser"];
         if (Logged == null)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("index.aspx");
         }
     }
     protected void button_salir(object sender, EventArgs e)

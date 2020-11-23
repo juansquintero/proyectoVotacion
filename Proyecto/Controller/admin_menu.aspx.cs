@@ -12,7 +12,7 @@ public partial class View_admin_menu : System.Web.UI.Page
         var Logged = Session["validUser"];
         if (Logged == null)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("index.aspx");
         }
     }
 

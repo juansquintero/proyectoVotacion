@@ -13,7 +13,7 @@ public partial class View_add_votante : System.Web.UI.Page
         var Logged = Session["validUser"];
         if (Logged == null)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("index.aspx");
         }
     }
 
