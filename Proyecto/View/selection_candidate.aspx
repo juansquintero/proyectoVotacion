@@ -5,6 +5,7 @@
 <head runat="server">
  <title>Votacion</title>
     <link href="../App_Themes/DataGridCandidates/dataGrid.css" rel="Stylesheet" type="text/css" />
+    <link href="../App_Themes/Button/btncss.css" rel="Stylesheet" type="text/css" />
 
     <script type="text/javascript">  
             function CheckOtherIsCheckedByGVID(spanChk) {  

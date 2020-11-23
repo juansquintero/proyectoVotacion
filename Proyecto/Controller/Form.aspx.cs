@@ -43,7 +43,7 @@ public partial class View_Form : System.Web.UI.Page
         bool comprobation = int.TryParse(cedula, out validate_cedula);
         if (comprobation == true)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Funciona perro');</script>");
             user.Cedula = cedula;
         }
         else

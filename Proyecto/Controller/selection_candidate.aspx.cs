@@ -36,7 +36,8 @@ public partial class View_selection_candidate : System.Web.UI.Page
 
                 if (pa.Voto == true)
                 {
-                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usted ya ha votado');</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted ya realizo la votacion');window.open('index.aspx','_self');", true);
+                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usted ya ha votado');</script>");
                 }
                 else
                 {
@@ -59,6 +60,8 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 Session["validUser"] = null;
                 Session.Abandon();
                 Session.Clear();
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Gracias por ejercer su derecho al voto');window.open('index.aspx','_self');", true);
 
             }
         }
