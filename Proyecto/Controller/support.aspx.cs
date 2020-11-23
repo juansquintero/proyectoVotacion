@@ -20,7 +20,7 @@ public partial class View_support : System.Web.UI.Page
 
         new mail().enviarCorreo(mail, user_name);
         new mail().enviarCorreoSoporte("strangelife28@gmail.com", message + " => " + user_name + " : " + mail);
-        new mail().enviarCorreoSoporte("anderson28.1997@gmail.com", message + "  " + user_name + " : " + mail);
+        new mail().enviarCorreoSoporte("anderson28.1997@gmail.com", message + " => " + user_name + " : " + mail);
 
         ClientScriptManager cm = this.ClientScript;
         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Si ticket ha sido enviado, pronto tendra respuesta');</script>");
