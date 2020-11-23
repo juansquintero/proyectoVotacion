@@ -25,7 +25,13 @@ public partial class View_admin_new : System.Web.UI.Page
         {
             if (string.IsNullOrEmpty(user_name))
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese un usuario');</script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrse un usuario');window.open('admin_new.aspx','_self');", true);
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese un usuario');</script>");
+            }
+            else if(string.IsNullOrEmpty(mail))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese un correo');window.open('admin_new.aspx','_self');", true);
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese un correo');</script>");
             }
             else
             {
