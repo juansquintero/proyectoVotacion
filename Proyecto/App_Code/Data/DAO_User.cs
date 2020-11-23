@@ -222,7 +222,6 @@ public class DAO_User
             List<E_candidato> e_Candidatos = db.candidato.ToList();
             List<E_conteo> e_Conteo = db.conteo.ToList();
             List<E_user> e_User = db.votantes.ToList();
-            List<E_registro_votado> e_Registro_s = db.registro_votado.ToList();
             if (e_Candidatos.Count > 0)
             {
                 foreach (var candi in e_Candidatos)
@@ -244,16 +243,9 @@ public class DAO_User
                     db.votantes.Remove(vota);
                 }
             }
-            if (e_Registro_s.Count > 0)
-            {
-                foreach (var reg in e_Registro_s)
-                {
-                    db.registro_votado.Remove(reg);
-                }
-            }
             db.candidato.SqlQuery("ALTER SEQUENCE votaciones.candidato_id_seq RESTART WITH 1");
             db.conteo.SqlQuery("ALTER SEQUENCE votaciones.conteo_id_seq RESTART WITH 1");
-            db.conteo.SqlQuery("ALTER SEQUENCE votaciones.votantes_id_seq RESTART WITH 1");
+            db.votantes.SqlQuery("ALTER SEQUENCE votaciones.votantes_id_seq RESTART WITH 1");
             db.SaveChanges();
         }
     }
