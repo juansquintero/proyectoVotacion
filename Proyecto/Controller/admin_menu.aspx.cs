@@ -9,7 +9,11 @@ public partial class View_admin_menu : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        var Logged = Session["validUser"];
+        if (Logged == null)
+        {
+            Response.Redirect("Login.aspx");
+        }
     }
 
     protected void votantesBoton(object sender, EventArgs e)
