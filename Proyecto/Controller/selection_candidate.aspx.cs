@@ -19,7 +19,8 @@ public partial class View_selection_candidate : System.Web.UI.Page
         var can = new DAO_User().GetCandidato();
         if (can.Count == 0)
         {
-            Response.Redirect("~/View/index.aspx");
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No hay candidatos disponibles');window.open('index.aspx','_self');", true);
+            //Response.Redirect("~/View/index.aspx");
         }
     }
 
