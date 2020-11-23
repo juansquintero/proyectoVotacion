@@ -48,27 +48,27 @@ public partial class View_selection_candidate : System.Web.UI.Page
                     pa.Voto = true;
                     var mail = ((E_user)Session["validUser"]).Mail;
                     new mail().enviarCorreoVotado(mail, name);
+
+                    new DAO_User().save_votado(pa);
+                    var idcan = int.Parse(datagrid.Rows[i].Cells[0].Text);
+                    E_conteo ps = new DAO_User().getNoVotos(idcan);
+
+                    if (ps == null)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Discrepancia de candidato con conteo, reporte esto con un administrador');window.open('index.aspx','_self');", true);
+                    }
+
+                    user2.Id = ps.Id;
+                    user2.N_votos = ps.N_votos + 1;
+
+                    new DAO_User().anadir_voto(user2);
+
+                    Session["validUser"] = null;
+                    Session.Abandon();
+                    Session.Clear();
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Gracias por ejercer su derecho al voto');window.open('index.aspx','_self');", true);
                 }
-
-                new DAO_User().save_votado(pa);
-                var idcan = int.Parse(datagrid.Rows[i].Cells[0].Text);
-                E_conteo ps = new DAO_User().getNoVotos(idcan);
-
-                if (ps == null)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Discrepancia de candidato con conteo, reporte esto con un administrador');window.open('index.aspx','_self');", true);
-                }
-
-                user2.Id = ps.Id;
-                user2.N_votos = ps.N_votos + 1;
-
-                new DAO_User().anadir_voto(user2);
-
-                Session["validUser"] = null;
-                Session.Abandon();
-                Session.Clear();
-
-                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Gracias por ejercer su derecho al voto');window.open('index.aspx','_self');", true);
 
             }
         }
