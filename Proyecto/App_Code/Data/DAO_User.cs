@@ -189,6 +189,7 @@ public class DAO_User
         {
             E_candidato e_candidato2 = db.candidato.Where(x => x.Id == e_Candidato.Id).FirstOrDefault();
             E_audit_candidato audit_Candidato = new E_audit_candidato();
+            E_conteo cos = new E_conteo();
 
             audit_Candidato.Nombre_old = e_candidato2.Nombre;
             audit_Candidato.Nombre_new = e_Candidato.Nombre;
@@ -202,11 +203,15 @@ public class DAO_User
             audit_Candidato.Fecha = DateTime.Now;
 
             e_candidato2.Nombre = e_Candidato.Nombre;
+            cos.Nombre = e_candidato2.Nombre;
             e_candidato2.Apellido = e_Candidato.Apellido;
+            cos.Apellido = e_candidato2.Apellido;
             e_candidato2.Partido = e_Candidato.Partido;
+            cos.Partido = e_candidato2.Cc;
             e_candidato2.Cc = e_Candidato.Cc;
 
             db.audit_cadidato.Add(audit_Candidato);
+            db.conteo.Attach(cos);
             db.candidato.Attach(e_candidato2);
             var entry = db.Entry(e_candidato2);
             entry.State = EntityState.Modified;

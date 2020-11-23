@@ -62,7 +62,7 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Discrepancia de candidato con conteo, reporte esto con un administrador');window.open('index.aspx','_self');", true);
                 }
-
+             
                 user2.Id = ps.Id;
                 user2.N_votos = ps.N_votos + 1;
 
