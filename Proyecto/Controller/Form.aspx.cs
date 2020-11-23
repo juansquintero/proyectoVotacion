@@ -48,7 +48,7 @@ public partial class View_Form : System.Web.UI.Page
         }
         else
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Digite su cedula');window.open('admin_menu.aspx','_self');", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Digite su cedula');window.open('Form.aspx','_self');", true);
             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
             //Response.Redirect("~/View/admin_menu.aspx");
         }
