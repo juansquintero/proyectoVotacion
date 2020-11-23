@@ -76,10 +76,7 @@ public partial class View_selection_candidate : System.Web.UI.Page
 
 
             }
-            else
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted no selecciono un candidato');window.open('Form.aspx','_self');", true);
-            }
+            
         }
 
 
