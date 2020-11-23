@@ -17,6 +17,7 @@ public partial class View_Form : System.Web.UI.Page
     {
         ClientScriptManager cm = this.ClientScript;
         E_user user = new E_user();
+        
 
         string user_name = Page.Request.Form["name"].ToString();
         if (string.IsNullOrEmpty(user_name))
@@ -110,6 +111,8 @@ public partial class View_Form : System.Web.UI.Page
         Session["validUser"] = user;        
         user = new DAO_User().compareUser(user);
 
+        E_user pa = new DAO_User().getCandidatoVoto(cedula);
+
         if (user == null)
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Esta persona no existe o no puede votar');</script>");
@@ -117,6 +120,10 @@ public partial class View_Form : System.Web.UI.Page
         else if (user.Cedula != cedula)
         {
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Esa cedula no existe');</script>");
+        }
+        else if(pa.Voto == true)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted ya realizo la votacion');window.open('index.aspx','_self');", true);
         }
         else
         {
