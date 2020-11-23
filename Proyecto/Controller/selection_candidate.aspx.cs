@@ -17,7 +17,7 @@ public partial class View_selection_candidate : System.Web.UI.Page
         }
 
         var can = new DAO_User().GetCandidato();
-        if (can == null)
+        if (can.Count == 0)
         {
             Response.Redirect("~/View/index.aspx");
         }
@@ -74,6 +74,10 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Gracias por ejercer su derecho al voto');window.open('index.aspx','_self');", true);
 
 
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted no selecciono un candidato');window.open('Form.aspx','_self');", true);
             }
         }
 
