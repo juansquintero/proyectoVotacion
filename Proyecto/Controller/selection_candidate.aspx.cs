@@ -15,6 +15,12 @@ public partial class View_selection_candidate : System.Web.UI.Page
             ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted ya realizo la votacion');window.open('index.aspx','_self');", true);
             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usted ya ha votado');</script>");
         }
+
+        var can = new DAO_User().GetCandidato();
+        if (can == null)
+        {
+            Response.Redirect("~/View/index.aspx");
+        }
     }
 
     protected void datagrid_SelectedIndexChanged(object sender, EventArgs e)

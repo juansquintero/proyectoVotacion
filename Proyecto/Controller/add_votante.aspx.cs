@@ -134,13 +134,15 @@ public partial class View_add_votante : System.Web.UI.Page
                         }
                         if (year < 18)
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No es posible');window.open('add_votante.aspx','_self');", true);
+                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted es menor a 18 años');window.open('add_votante.aspx','_self');", true);
+                            return;
                             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
                             //Response.Redirect("~/View/add_votante.aspx");
                         }
                         else if (year == 18 && month < 1)
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No es posible');window.open('add_votante.aspx','_self');", true);
+                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted es menor a 18 años');window.open('add_votante.aspx','_self');", true);
+                            return;
                             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
                             //Response.Redirect("~/View/add_votante.aspx");
                         }
@@ -151,7 +153,11 @@ public partial class View_add_votante : System.Web.UI.Page
                     }
                     if(correoeoeo == false)
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Su correo no es usabl');window.open('add_votante.aspx','_self');", true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Su correo no es usable');window.open('add_votante.aspx','_self');", true);
+                    }
+                    else if (user.Expe == null)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Hubo un error con la fecha de expedicion, consulte a un administrador');window.open('admin_menu.aspx','_self');", true);
                     }
                     else
                     {
@@ -166,6 +172,7 @@ public partial class View_add_votante : System.Web.UI.Page
                 else if (checkUser.Cedula == cedula)
                 {
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Cedula ya Registrada');</script>");
+                    return;
                 }
             }
             else
