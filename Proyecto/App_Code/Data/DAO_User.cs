@@ -28,11 +28,11 @@ public class DAO_User
         }
     }
 
-    public void save_votado(E_registro_votado user)
+    public void save_votado(E_user e_User)
     {
         using (var db = new Mapping())
         {
-            db.registro_votado.Add(user);
+            db.votantes.Add(e_User);
             db.SaveChanges();
         }
     }
