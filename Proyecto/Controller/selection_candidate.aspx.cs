@@ -55,8 +55,8 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 }
 
                 new DAO_User().save_votado(user);
-
-                E_conteo ps = new DAO_User().getNoVotos(int.Parse(datagrid.Rows[i].Cells[0].Text));
+                var idcan = int.Parse(datagrid.Rows[i].Cells[0].Text);
+                E_conteo ps = new DAO_User().getNoVotos(idcan);
 
                 user2.Id = ps.Id;
                 user2.N_votos = ps.N_votos + 1;
