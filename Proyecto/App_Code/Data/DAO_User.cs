@@ -163,6 +163,19 @@ public class DAO_User
     {
         using (var db = new Mapping())
         {
+            E_audit_candidato audit_candidato = new E_audit_candidato();
+
+            audit_candidato.Nombre_old = e_Candidato.Nombre;
+            audit_candidato.Nombre_new = "Eliminado";
+            audit_candidato.Apellido_old = e_Candidato.Apellido;
+            audit_candidato.Apellido_new = "Eliminado";
+            audit_candidato.Cedula_old = e_Candidato.Cc;
+            audit_candidato.Cedula_new = "Eliminado";
+            audit_candidato.Partido_old = e_Candidato.Partido;
+            audit_candidato.Partido_new = "Eliminado";
+            audit_candidato.Fecha = DateTime.Now;
+
+            db.audit_cadidato.Add(audit_candidato);
             db.candidato.Attach(e_Candidato);
             var entry = db.Entry(e_Candidato);
             entry.State = EntityState.Deleted;
@@ -175,10 +188,25 @@ public class DAO_User
         using (var db = new Mapping())
         {
             E_candidato e_candidato2 = db.candidato.Where(x => x.Id == e_Candidato.Id).FirstOrDefault();
+            E_audit_candidato audit_Candidato = new E_audit_candidato();
+
+            audit_Candidato.Nombre_old = e_candidato2.Nombre;
+            audit_Candidato.Nombre_new = e_Candidato.Nombre;
+            audit_Candidato.Apellido_old = e_candidato2.Apellido;
+            audit_Candidato.Apellido_new = e_Candidato.Apellido;
+            audit_Candidato.Cedula_old = e_candidato2.Cc;
+            audit_Candidato.Cedula_new = e_Candidato.Cc;
+            audit_Candidato.Partido_old = e_candidato2.Partido;
+            audit_Candidato.Partido_new = e_Candidato.Partido;
+ 
+            audit_Candidato.Fecha = DateTime.Now;
+
             e_candidato2.Nombre = e_Candidato.Nombre;
             e_candidato2.Apellido = e_Candidato.Apellido;
             e_candidato2.Partido = e_Candidato.Partido;
             e_candidato2.Cc = e_Candidato.Cc;
+
+            db.audit_cadidato.Add(audit_Candidato);
             db.candidato.Attach(e_candidato2);
             var entry = db.Entry(e_candidato2);
             entry.State = EntityState.Modified;
@@ -190,6 +218,23 @@ public class DAO_User
     {
         using (var db = new Mapping())
         {
+            E_audit_votante audit_votante = new E_audit_votante();
+
+            audit_votante.Nombre_old = e_User.User_name;
+            audit_votante.Nombre_new = "Eliminado";
+            audit_votante.Apellido_old = e_User.User_lastname;
+            audit_votante.Apellido_new = "Eliminado";
+            audit_votante.Cedula_old = e_User.Cedula;
+            audit_votante.Cedula_new = "Eliminado";
+            audit_votante.Fechanac_old = e_User.Nacimiento;
+            audit_votante.Fechanac_new = "Eliminado";
+            audit_votante.Fechaexp_old = e_User.Expe;
+            audit_votante.Fechaexp_new = "Eliminado";
+            audit_votante.Correo_old = e_User.Mail;
+            audit_votante.Correo_new = "Eliminado";
+            audit_votante.Fecha = DateTime.Now;
+
+            db.audit_votante.Add(audit_votante);
             db.votantes.Attach(e_User);
             var entry = db.Entry(e_User);
             entry.State = EntityState.Deleted;
@@ -202,12 +247,31 @@ public class DAO_User
         using (var db = new Mapping())
         {
             E_user e_user2 = db.votantes.Where(x => x.Id == e_User.Id).FirstOrDefault();
+            E_audit_votante audit_votante = new E_audit_votante();
+
+            audit_votante.Nombre_old = e_user2.User_name;
+            audit_votante.Nombre_new = e_User.User_name;
+            audit_votante.Apellido_old = e_user2.User_lastname;
+            audit_votante.Apellido_new = e_User.User_lastname;
+            audit_votante.Cedula_old = e_user2.Cedula;
+            audit_votante.Cedula_new = e_User.Cedula;
+            audit_votante.Fechanac_old = e_user2.Nacimiento;
+            audit_votante.Fechanac_new = e_User.Nacimiento;
+            audit_votante.Fechaexp_old = e_user2.Expe;
+            audit_votante.Fechaexp_new = e_User.Expe;
+            audit_votante.Correo_old = e_user2.Mail;
+            audit_votante.Correo_new = e_User.Mail;
+            audit_votante.Fecha = DateTime.Now;
+
             e_user2.User_name = e_User.User_name;
             e_user2.User_lastname = e_User.User_lastname;
             e_user2.Cedula = e_User.Cedula;
             e_user2.Mail = e_User.Mail;
             e_user2.Nacimiento = e_User.Nacimiento;
             e_user2.Expe = e_User.Expe;
+
+            db.audit_votante.Add(audit_votante);
+
             db.votantes.Attach(e_user2);
             var entry = db.Entry(e_user2);
             entry.State = EntityState.Modified;
@@ -222,7 +286,6 @@ public class DAO_User
             List<E_candidato> e_Candidatos = db.candidato.ToList();
             List<E_conteo> e_Conteo = db.conteo.ToList();
             List<E_user> e_User = db.votantes.ToList();
-            List<E_registro_votado> e_Registro_s = db.registro_votado.ToList();
             if (e_Candidatos.Count > 0)
             {
                 foreach (var candi in e_Candidatos)
@@ -244,15 +307,9 @@ public class DAO_User
                     db.votantes.Remove(vota);
                 }
             }
-            if (e_Registro_s.Count > 0)
-            {
-                foreach (var reg in e_Registro_s)
-                {
-                    db.registro_votado.Remove(reg);
-                }
-            }
             db.candidato.SqlQuery("ALTER SEQUENCE votaciones.candidato_id_seq RESTART WITH 1");
             db.conteo.SqlQuery("ALTER SEQUENCE votaciones.conteo_id_seq RESTART WITH 1");
+            db.votantes.SqlQuery("ALTER SEQUENCE votaciones.votantes_id_seq RESTART WITH 1");
             db.SaveChanges();
         }
     }

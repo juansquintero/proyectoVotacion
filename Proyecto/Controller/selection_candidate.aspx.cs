@@ -15,6 +15,13 @@ public partial class View_selection_candidate : System.Web.UI.Page
             ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted ya realizo la votacion');window.open('index.aspx','_self');", true);
             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Usted ya ha votado');</script>");
         }
+
+        var can = new DAO_User().GetCandidato();
+        if (can.Count == 0)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No hay candidatos disponibles');window.open('index.aspx','_self');", true);
+            //Response.Redirect("~/View/index.aspx");
+        }
     }
 
     protected void datagrid_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,7 +51,7 @@ public partial class View_selection_candidate : System.Web.UI.Page
 
                 var name = ((E_user)Session["validUser"]).User_name;
                 pa.Voto = true;
-                var mail = ((E_user)Session["validUser"]).Mail;
+                var mail = pa.Mail;
                 new mail().enviarCorreoVotado(mail, name);
 
                 new DAO_User().save_votado(pa);
@@ -68,6 +75,10 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Gracias por ejercer su derecho al voto');window.open('index.aspx','_self');", true);
 
 
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted no selecciono un candidato');window.open('Form.aspx','_self');", true);
             }
         }
 

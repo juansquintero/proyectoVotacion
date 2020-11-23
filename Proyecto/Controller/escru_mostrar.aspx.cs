@@ -33,7 +33,14 @@ public partial class View_escru_mostrar : System.Web.UI.Page
 
     protected void Expo_Click(object sender, EventArgs e)
     {
-        ExportGridToword();
+        if(datagrid.Rows.Count == 0)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No hay resultados para exportar');window.open('admin_menu.aspx','_self');", true);
+        }
+        else
+        {
+            ExportGridToword();
+        }    
     }
 
     protected void ExportGridToword()

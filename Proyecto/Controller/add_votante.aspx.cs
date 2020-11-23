@@ -39,6 +39,19 @@ public partial class View_add_votante : System.Web.UI.Page
                 E_user checkUser = new DAO_User().GetVotanteCheck(cedula);
                 if (checkUser == null)
                 {
+                    string user_mail = Page.Request.Form["email"].ToString();
+                    bool correoeoeo = false;
+                    if (user_mail.Contains("@hotmail") || user_mail.Contains("@gmail") || user_mail.Contains("@outlook") || user_mail.Contains("@yahoo"))
+                        correoeoeo = true;
+                    if (string.IsNullOrEmpty(user_mail) || correoeoeo == false)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese un correo valido');window.open('add_votante.aspx','_self');", true);
+                    }
+                    else
+                    {
+                        user.Mail = user_mail;
+                    }
+
                     string user_name = Page.Request.Form["name"].ToString();
                     if (string.IsNullOrEmpty(user_name))
                     {
@@ -57,16 +70,6 @@ public partial class View_add_votante : System.Web.UI.Page
                     {
                         user.User_lastname = user_lastname;
                     }
-                    string user_mail = Page.Request.Form["email"].ToString();
-                    if (string.IsNullOrEmpty(user_mail))
-                    {
-                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su email');</script>");
-                    }
-                    else
-                    {
-                        user.Mail = user_mail;
-                    }
-
                     string date_nac = Page.Request.Form["date_nac"].ToString();
                     if (string.IsNullOrEmpty(date_nac))
                     {
@@ -131,13 +134,15 @@ public partial class View_add_votante : System.Web.UI.Page
                         }
                         if (year < 18)
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No es posible');window.open('add_votante.aspx','_self');", true);
+                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted es menor a 18 años');window.open('add_votante.aspx','_self');", true);
+                            return;
                             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
                             //Response.Redirect("~/View/add_votante.aspx");
                         }
-                        else if (year == 18 && month < 1)
+                        else if (year == 18 && month < 1 && month>-1)
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('No es posible');window.open('add_votante.aspx','_self');", true);
+                            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted es menor a 18 años');window.open('add_votante.aspx','_self');", true);
+                            return;
                             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
                             //Response.Redirect("~/View/add_votante.aspx");
                         }
@@ -146,17 +151,28 @@ public partial class View_add_votante : System.Web.UI.Page
                             user.Expe = date_exp;
                         }
                     }
-
-                    user.Cedula = cedula;
-                    user.Voto = false;
-                    new DAO_User().save_votantes(user);
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ha sido registrado');window.open('admin_menu.aspx','_self');", true);
-                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
-                    //Response.Redirect("~/View/admin_menu.aspx");
+                    if(correoeoeo == false)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Su correo no es usable');window.open('add_votante.aspx','_self');", true);
+                    }
+                    else if (user.Expe == null)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Hubo un error con la fecha de expedicion, consulte a un administrador');window.open('admin_menu.aspx','_self');", true);
+                    }
+                    else
+                    {
+                        user.Cedula = cedula;
+                        user.Voto = false;
+                        new DAO_User().save_votantes(user);
+                        ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ha sido registrado');window.open('admin_menu.aspx','_self');", true);
+                        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
+                        //Response.Redirect("~/View/admin_menu.aspx");
+                    }
                 }
                 else if (checkUser.Cedula == cedula)
                 {
                     cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Cedula ya Registrada');</script>");
+                    return;
                 }
             }
             else
@@ -170,9 +186,6 @@ public partial class View_add_votante : System.Web.UI.Page
     }
     protected void button_salir(object sender, EventArgs e)
     {
-        Session["validUser"] = null;
-        Session.Abandon();
-        Session.Clear();
         Response.Redirect("~/View/admin_menu.aspx");
     }
 }

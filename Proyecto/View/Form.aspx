@@ -64,13 +64,6 @@
 					<span class="focus-input100"></span>
 				</div>
 
-                <div class="wrap-input100 validate-input" data-validate = "Un correo valido es necesario: ex@abc.xyz">
-					<span class="label-input100">Correo</span>
-					<input class="input100" type="text" name="email" id="email" placeholder="Ingrese su correo" required>
-                   
-					<span class="focus-input100"></span>
-				</div>
-
                 <div class="wrap-input100 validate-input" data-validate="Nacimiento">
 					<span class="label-input100">Fecha de nacimiento</span>
                        <div class="form-group"> <!-- Date input -->
