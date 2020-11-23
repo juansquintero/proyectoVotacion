@@ -26,11 +26,11 @@ public partial class View_add_candidato : System.Web.UI.Page
         string cedula = Page.Request.Form["cedula"].ToString();
         //-//
         int largoCedula = cedula.Length;
-        if (largoCedula<5 || largoCedula>10)
+        if (largoCedula < 5 || largoCedula > 10)
         {
             ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('El tamaño de la cédula es inconsistente');window.open('add_candidato.aspx','_self');", true);
         }
-        else 
+        else
         {
             int validate_cedula = 0;
             bool comprobation = int.TryParse(cedula, out validate_cedula);
@@ -144,9 +144,9 @@ public partial class View_add_candidato : System.Web.UI.Page
                 Response.Redirect("~/View/admin_menu.aspx");
             }
         }
-        
 
-        
+
+
     }
 
     protected void button_salir(object sender, EventArgs e)

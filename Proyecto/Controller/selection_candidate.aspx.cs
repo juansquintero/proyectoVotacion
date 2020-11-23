@@ -9,7 +9,7 @@ public partial class View_selection_candidate : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
     }
 
     protected void datagrid_SelectedIndexChanged(object sender, EventArgs e)
@@ -52,10 +52,10 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 E_conteo ps = new DAO_User().getNoVotos(int.Parse(datagrid.Rows[i].Cells[0].Text));
 
                 user2.Id = ps.Id;
-                user2.N_votos = ps.N_votos+1;
+                user2.N_votos = ps.N_votos + 1;
 
                 new DAO_User().anadir_voto(user2);
-                    
+
                 Session["validUser"] = null;
                 Session.Abandon();
                 Session.Clear();
@@ -63,6 +63,6 @@ public partial class View_selection_candidate : System.Web.UI.Page
             }
         }
 
-        
+
     }
 }

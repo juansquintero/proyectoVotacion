@@ -10,7 +10,7 @@ public partial class View_add_votante : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void button_enviar(object sender, EventArgs e)
@@ -21,7 +21,7 @@ public partial class View_add_votante : System.Web.UI.Page
         string cedula = Page.Request.Form["cedula"].ToString();
         int largoCedula = cedula.Length;
         int validate_cedula = 0;
-        if (largoCedula <5 || largoCedula>10)
+        if (largoCedula < 5 || largoCedula > 10)
         {
             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('el tamaño de la cédula es inconsistente');</script>");
             ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('El tamaño de la cédula es inconsistente');window.open('add_votante.aspx','_self');", true);
@@ -142,7 +142,7 @@ public partial class View_add_votante : System.Web.UI.Page
                             user.Expe = date_exp;
                         }
                     }
-                    
+
                     user.Cedula = cedula;
                     user.Voto = false;
                     new DAO_User().save_votantes(user);
@@ -162,7 +162,7 @@ public partial class View_add_votante : System.Web.UI.Page
                 //Response.Redirect("~/View/admin_menu.aspx");
             }
         }
-        
+
     }
     protected void button_salir(object sender, EventArgs e)
     {

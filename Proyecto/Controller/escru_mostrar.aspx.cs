@@ -14,7 +14,7 @@ public partial class View_escru_mostrar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
     }
 
     protected void button_salir(object sender, EventArgs e)
@@ -24,7 +24,7 @@ public partial class View_escru_mostrar : System.Web.UI.Page
 
     public override void VerifyRenderingInServerForm(Control control)
     {
-        
+
     }
 
     protected void Expo_Click(object sender, EventArgs e)

@@ -37,7 +37,7 @@ public class mail
             mailM.To.Add(correoDestino);
             mailM.IsBodyHtml = true;
             mailM.Priority = MailPriority.Normal;
-            SmtpServer.Port = 587; 
+            SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("votacion.proyecto2020@gmail.com", "negrorico2020");
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mailM);

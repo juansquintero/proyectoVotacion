@@ -17,7 +17,7 @@ public class Mapping : DbContext
     public Mapping()
         : base("name=connect")
     {
-        
+
     }
     public DbSet<E_user> votantes { get; set; }
     public DbSet<E_admin> user_admin { get; set; }

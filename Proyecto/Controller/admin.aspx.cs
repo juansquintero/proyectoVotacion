@@ -26,7 +26,7 @@ public partial class View_admin : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El usuario es incorrecto');</script>");
         }
         else
-        {          
+        {
             Session["validUser"] = euser;
             ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Bienvenido');window.open('admin_menu.aspx','_self');", true);
             //Response.Redirect("admin_menu.aspx");

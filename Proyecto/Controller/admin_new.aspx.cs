@@ -28,7 +28,7 @@ public partial class View_admin_new : System.Web.UI.Page
                 ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrse un usuario');window.open('admin_new.aspx','_self');", true);
                 //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese un usuario');</script>");
             }
-            else if(string.IsNullOrEmpty(mail))
+            else if (string.IsNullOrEmpty(mail))
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese un correo');window.open('admin_new.aspx','_self');", true);
                 //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese un correo');</script>");
@@ -42,7 +42,7 @@ public partial class View_admin_new : System.Web.UI.Page
                 euser.User_code_admin = r.Next(10000, 99999).ToString();
 
                 new DAO_User().save_admin(euser);
-                new mail().enviarCorreoAdmin(mail, euser.User_code_admin);                
+                new mail().enviarCorreoAdmin(mail, euser.User_code_admin);
             }
         }
         else if (ps.User_name_admin == user_name)
