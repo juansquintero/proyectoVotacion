@@ -139,7 +139,7 @@ public partial class View_add_votante : System.Web.UI.Page
                             //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese su fecha de nacimiento');</script>");
                             //Response.Redirect("~/View/add_votante.aspx");
                         }
-                        else if (year == 18 && month < 1)
+                        else if (year == 18 && month < 1 && month>-1)
                         {
                             ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Usted es menor a 18 años');window.open('add_votante.aspx','_self');", true);
                             return;
