@@ -123,7 +123,7 @@
                 alert("Por favor corrija");
             }
             if (!z.match(/^\d+/)) {
-                alert("No sea loca");
+                alert("Ingrese su cedula");
             }
         }
     </script>
