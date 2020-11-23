@@ -58,6 +58,11 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 var idcan = int.Parse(datagrid.Rows[i].Cells[0].Text);
                 E_conteo ps = new DAO_User().getNoVotos(idcan);
 
+                if (ps == null)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('El candidato no fue encontrado, reporte esto con un administrador');window.open('index.aspx','_self');", true);
+                }
+
                 user2.Id = ps.Id;
                 user2.N_votos = ps.N_votos + 1;
 
