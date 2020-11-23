@@ -32,7 +32,12 @@ public partial class View_selection_candidate : System.Web.UI.Page
 
                 //Validacion para confirmar que el usurio no ha votado
 
-                E_user pa = new DAO_User().getCandidatoVoto(((E_user)Session["validUser"]).Id);
+                E_user pa = new DAO_User().getCandidatoVoto(((E_user)Session["validUser"]).Cedula);
+
+                if (pa == null)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Hubo un error haciendo la busqueda del votante');window.open('index.aspx','_self');", true);
+                }
 
                 if (pa.Voto == true)
                 {

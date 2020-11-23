@@ -129,9 +129,9 @@ public partial class View_add_candidato : System.Web.UI.Page
                     new DAO_User().save_candidatos(user);
                     new DAO_User().conteo_add(user2);
 
-                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
-
-                    Response.Redirect("~/View/admin_menu.aspx");
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('El candidato ha sido registrado con exito');window.open('admin_menu.aspx','_self');", true);
+                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ha funcionado');</script>");
+                    //Response.Redirect("~/View/admin_menu.aspx");
                 }
                 else if (checkCandidato.Cc == cedula)
                 {
@@ -140,8 +140,9 @@ public partial class View_add_candidato : System.Web.UI.Page
             }
             else
             {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
-                Response.Redirect("~/View/admin_menu.aspx");
+                ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Digite su cedula');window.open('add_candidato.aspx','_self');", true);
+                //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
+                //Response.Redirect("~/View/admin_menu.aspx");
             }
         }
 

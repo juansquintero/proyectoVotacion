@@ -122,11 +122,11 @@ public class DAO_User
         }
     }
 
-    public E_user getCandidatoVoto(int user_id)
+    public E_user getCandidatoVoto(string cedula)
     {
         using (var db = new Mapping())
         {
-            return db.votantes.Where(x => x.Id.Equals(user_id)).FirstOrDefault();
+            return db.votantes.Where(x => x.Cedula.Equals(cedula)).FirstOrDefault();
         }
     }
 

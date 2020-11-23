@@ -107,7 +107,7 @@ public partial class View_Form : System.Web.UI.Page
             user.Expe = date_exp;
         }
 
-        Session["validUser"] = user;
+        Session["validUser"] = user;        
         user = new DAO_User().compareUser(user);
 
         if (user == null)
