@@ -165,13 +165,13 @@ public class DAO_User
         {
             E_audit_candidato audit_candidato = new E_audit_candidato();
 
-            audit_candidato.Nombre_old = e_candidato2.Nombre;
+            audit_candidato.Nombre_old = e_Candidato.Nombre;
             audit_candidato.Nombre_new = "Eliminado";
-            audit_candidato.Apellido_old = e_candidato2.Apellido;
+            audit_candidato.Apellido_old = e_Candidato.Apellido;
             audit_candidato.Apellido_new = "Eliminado";
-            audit_candidato.Cedula_old = e_candidato2.Cc;
+            audit_candidato.Cedula_old = e_Candidato.Cc;
             audit_candidato.Cedula_new = "Eliminado";
-            audit_candidato.Partido_old = e_candidato2.Partido;
+            audit_candidato.Partido_old = e_Candidato.Partido;
             audit_candidato.Partido_new = "Eliminado";
             audit_candidato.Fecha = DateTime.Now;
 
