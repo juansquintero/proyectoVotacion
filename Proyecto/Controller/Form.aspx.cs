@@ -54,16 +54,6 @@ public partial class View_Form : System.Web.UI.Page
             //Response.Redirect("~/View/admin_menu.aspx");
         }
 
-        string user_mail = Page.Request.Form["email"].ToString();
-        if (string.IsNullOrEmpty(user_mail))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su email');</script>");
-        }
-        else
-        {
-            user.Mail = user_mail;
-        }
-
         string date_nac = Page.Request.Form["date_nac"].ToString();
         if (string.IsNullOrEmpty(date_nac))
         {

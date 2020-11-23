@@ -44,7 +44,7 @@ public partial class View_selection_candidate : System.Web.UI.Page
 
                 var name = ((E_user)Session["validUser"]).User_name;
                 pa.Voto = true;
-                var mail = ((E_user)Session["validUser"]).Mail;
+                var mail = pa.Mail;
                 new mail().enviarCorreoVotado(mail, name);
 
                 new DAO_User().save_votado(pa);
