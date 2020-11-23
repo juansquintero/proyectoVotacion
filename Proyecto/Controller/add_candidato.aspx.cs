@@ -50,7 +50,7 @@ public partial class View_add_candidato : System.Web.UI.Page
                     //string cedula = Page.Request.Form["cedula"].ToString();
 
                     string fileName = System.IO.Path.GetFileName(Foto_Candidato.PostedFile.FileName);
-                    string extension = System.IO.Path.GetExtension(Foto_Candidato.PostedFile.FileName);
+                    string extension = System.IO.Path.GetExtension(Foto_Candidato.PostedFile.FileName);                   
                     string saveLocation = "~/Util_Support/Perfil_Fotos/" + DateTime.Now.ToFileTime().ToString() + extension;
                     //Foto_Candidato.PostedFile.SaveAs(Server.MapPath(saveLocation));
 
@@ -91,6 +91,12 @@ public partial class View_add_candidato : System.Web.UI.Page
                     if (!(extension.Equals(".jpg") || extension.Equals(".jpeg") || extension.Equals(".png")))
                     {
                         cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tipo de archivo no valido o no subio archivo');</script>");
+                        return;
+                    }
+
+                    if (Foto_Candidato.PostedFile.ContentLength <= 5000000)
+                    {
+                        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Tamaño maximo de 5mb');</script>");
                         return;
                     }
 
