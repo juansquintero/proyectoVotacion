@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -246,6 +247,8 @@ public class DAO_User
                     db.registro_votado.Remove(reg);
                 }
             }
+            db.candidato.SqlQuery("ALTER SEQUENCE votaciones.candidato_id_seq RESTART WITH 1");
+            db.conteo.SqlQuery("ALTER SEQUENCE votaciones.conteo_id_seq RESTART WITH 1");
             db.SaveChanges();
         }
     }
