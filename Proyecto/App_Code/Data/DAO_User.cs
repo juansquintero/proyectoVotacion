@@ -253,6 +253,7 @@ public class DAO_User
             }
             db.candidato.SqlQuery("ALTER SEQUENCE votaciones.candidato_id_seq RESTART WITH 1");
             db.conteo.SqlQuery("ALTER SEQUENCE votaciones.conteo_id_seq RESTART WITH 1");
+            db.conteo.SqlQuery("ALTER SEQUENCE votaciones.votantes_id_seq RESTART WITH 1");
             db.SaveChanges();
         }
     }
