@@ -26,8 +26,6 @@ public partial class View_selection_candidate : System.Web.UI.Page
             RadioButton rb = (datagrid.Rows[i].FindControl("rdbauthid")) as RadioButton;
             if (rb.Checked == true)
             {
-
-                E_registro_votado user = new E_registro_votado();
                 E_conteo user2 = new E_conteo();
 
                 //Validacion para confirmar que el usurio no ha votado
@@ -46,15 +44,13 @@ public partial class View_selection_candidate : System.Web.UI.Page
                 }
                 else
                 {
-                    user.Nombre = ((E_user)Session["validUser"]).User_name;
-                    user.Apellido = ((E_user)Session["validUser"]).User_lastname;
-                    user.Cc = ((E_user)Session["validUser"]).Cedula;
-                    user.Voto = true;
+                    var name = ((E_user)Session["validUser"]).User_name;
+                    pa.Voto = true;
                     var mail = ((E_user)Session["validUser"]).Mail;
-                    new mail().enviarCorreoVotado(mail, user.Nombre);
+                    new mail().enviarCorreoVotado(mail, name);
                 }
 
-                new DAO_User().save_votado(user);
+                new DAO_User().save_votado(pa);
                 var idcan = int.Parse(datagrid.Rows[i].Cells[0].Text);
                 E_conteo ps = new DAO_User().getNoVotos(idcan);
 

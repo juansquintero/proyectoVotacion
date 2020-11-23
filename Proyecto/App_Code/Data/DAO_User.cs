@@ -32,7 +32,11 @@ public class DAO_User
     {
         using (var db = new Mapping())
         {
-            db.votantes.Add(e_User);
+            E_user e_user2 = db.votantes.Where(x => x.Id == e_User.Id).FirstOrDefault();
+            e_user2.Voto = e_User.Voto;          
+            db.votantes.Attach(e_user2);
+            var entry = db.Entry(e_user2);
+            entry.State = EntityState.Modified;
             db.SaveChanges();
         }
     }
