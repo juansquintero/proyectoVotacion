@@ -41,7 +41,8 @@ public partial class View_admin_menu : System.Web.UI.Page
     {
         new DAO_User().truncateTables();
         ClientScriptManager cm = this.ClientScript;
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Se ha borrado la base de datos');</script>");
+        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Se ha borrado la base de datos');</script>");
+        Response.Write("<script>alert('Datos eliminados')</script>");
     }
 
     protected void salir_click(object sender, EventArgs e)

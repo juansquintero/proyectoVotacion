@@ -48,7 +48,8 @@ public partial class View_add_candidato : System.Web.UI.Page
                 string user_name = Page.Request.Form["name"].ToString();
                 if (string.IsNullOrEmpty(user_name))
                 {
-                    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese el nombre');</script>");
+                    //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese el nombre');</script>");
+                    Response.Write("<script>alert('Ingrese el nombre')</script>");
                 }
                 else
                 {

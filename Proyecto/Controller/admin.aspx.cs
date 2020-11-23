@@ -27,9 +27,10 @@ public partial class View_admin : System.Web.UI.Page
         }
         else
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvendo');</script>");
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvendo');</script>");
             Session["validUser"] = euser;
             Response.Redirect("admin_menu.aspx");
+            Response.Write("<script>alert('Bienvenido')</script>");
         }
     }
 
