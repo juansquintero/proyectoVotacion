@@ -48,8 +48,9 @@ public partial class View_Form : System.Web.UI.Page
         }
         else
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
-            Response.Redirect("~/View/admin_menu.aspx");
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Digite su cedula');window.open('admin_menu.aspx','_self');", true);
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Digite su cedula');</script>");
+            //Response.Redirect("~/View/admin_menu.aspx");
         }
 
         string user_mail = Page.Request.Form["email"].ToString();
@@ -117,8 +118,9 @@ public partial class View_Form : System.Web.UI.Page
         }
         else
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvenido');</script>");
-            Response.Redirect("~/View/selection_candidate.aspx");
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Bienvenido');window.open('selection_candidate.aspx','_self');", true);
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvenido');</script>");
+            //Response.Redirect("~/View/selection_candidate.aspx");
         }
     }
 

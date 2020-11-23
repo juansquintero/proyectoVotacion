@@ -40,8 +40,9 @@ public partial class View_admin_new : System.Web.UI.Page
         }
         else if (ps.User_name_admin == user_name)
         {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese un usuario');</script>");
-            Response.Redirect("~/View/admin_new.aspx");
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Ingrese su usuario');window.open('admin_new.aspx','_self');", true);
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ingrese un usuario');</script>");
+            //Response.Redirect("~/View/admin_new.aspx");
         }
     }
 

@@ -26,11 +26,11 @@ public partial class View_admin : System.Web.UI.Page
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El usuario es incorrecto');</script>");
         }
         else
-        {
-            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Bienvendo');</script>");
+        {          
             Session["validUser"] = euser;
-            Response.Redirect("admin_menu.aspx");
-            Response.Write("<script>alert('Bienvenido')</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "Alert", "alert('Bienvenido');window.open('add_menu.aspx','_self');", true);
+            //Response.Redirect("admin_menu.aspx");
+            //Response.Write("<script>alert('Bienvenido')</script>");
         }
     }
 
