@@ -258,9 +258,9 @@ public class DAO_User
             audit_votante.Fechanac_old = e_user2.Nacimiento;
             audit_votante.Fechanac_new = e_User.Nacimiento;
             audit_votante.Fechaexp_old = e_user2.Expe;
-            audit_votante.Fechaexp_new = e_user2.Expe;
+            audit_votante.Fechaexp_new = e_User.Expe;
             audit_votante.Correo_old = e_user2.Mail;
-            audit_votante.Correo_new = e_user2.Mail;
+            audit_votante.Correo_new = e_User.Mail;
             audit_votante.Fecha = DateTime.Now;
 
             e_user2.User_name = e_User.User_name;
