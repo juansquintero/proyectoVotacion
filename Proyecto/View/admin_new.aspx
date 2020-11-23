@@ -40,11 +40,7 @@
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Por favor ingrese un usuario">
 						<input class="input100" type="text" name="username" placeholder="Usuario">
 						<span class="focus-input100"></span>
-					</div>
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Ingrese su correo">
-						<input class="input100" type="text" name="mail" placeholder="Correo">
-						<span class="focus-input100"></span>
-					</div>
+					</div>			
 
 					<div class="container-login100-form-btn">
 						<button style="margin-top:25px" runat="server" onserverclick="registerButton" class="login100-form-btn">

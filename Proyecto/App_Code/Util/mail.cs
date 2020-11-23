@@ -22,125 +22,29 @@ public class mail
         try
         {
 
-            var EmailTemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "\\Template\\mailer.html"));
-            var strBody = string.Format(EmailTemplate.ReadToEnd(), user_name);
-            EmailTemplate.Close(); EmailTemplate.Dispose(); EmailTemplate = null;
+            var Emailtemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "Template\\mailer.html"));
+            var strBody = string.Format(Emailtemplate.ReadToEnd(), user_name);
+            Emailtemplate.Close(); Emailtemplate.Dispose(); Emailtemplate = null;
 
 
             strBody = strBody.Replace("#TOKEN#", user_name);
-            MailMessage mailM = new MailMessage();
+            MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mailM.From = new MailAddress("soporte@gmail.com", "Soporte");
+            mail.From = new MailAddress("soporte@gmail.com", "Soporte");
             SmtpServer.Host = "smtp.gmail.com";
-            mailM.Subject = "Soporte Votacion";
-            mailM.Body = strBody;
-            mailM.To.Add(correoDestino);
-            mailM.IsBodyHtml = true;
-            mailM.Priority = MailPriority.Normal;
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("votacion.proyecto2020@gmail.com", "negrorico2020");
+            mail.Subject = "Soporte Votacion";
+            mail.Body = strBody;
+            mail.To.Add(correoDestino);
+            mail.IsBodyHtml = true;
+            mail.Priority = MailPriority.Normal;
+            SmtpServer.Port = 587; 
+            SmtpServer.Credentials = new System.Net.NetworkCredential("is20pasaportes@gmail.com", "tueomzhsfsvorbfq");
             SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mailM);
+            SmtpServer.Send(mail);
         }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
-
-    public void enviarCorreoAdmin(String correoDestino, String pass)
-    {
-
-        try
+        catch (Exception ex)
         {
 
-            var EmailTemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "\\Template\\mailer2.html"));
-            var strBody = string.Format(EmailTemplate.ReadToEnd(), pass);
-            EmailTemplate.Close(); EmailTemplate.Dispose(); EmailTemplate = null;
-
-
-            strBody = strBody.Replace("#TOKEN#", pass);
-            MailMessage mailM = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mailM.From = new MailAddress("soporte@gmail.com", "Soporte");
-            SmtpServer.Host = "smtp.gmail.com";
-            mailM.Subject = "Soporte Votacion";
-            mailM.Body = strBody;
-            mailM.To.Add(correoDestino);
-            mailM.IsBodyHtml = true;
-            mailM.Priority = MailPriority.Normal;
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("votacion.proyecto2020@gmail.com", "negrorico2020");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mailM);
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
-
-    public void enviarCorreoVotado(String correoDestino, String user)
-    {
-
-        try
-        {
-
-            var EmailTemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "\\Template\\mailer3.html"));
-            var strBody = string.Format(EmailTemplate.ReadToEnd(), user);
-            EmailTemplate.Close(); EmailTemplate.Dispose(); EmailTemplate = null;
-
-
-            strBody = strBody.Replace("#TOKEN#", user);
-            MailMessage mailM = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mailM.From = new MailAddress("soporte@gmail.com", "Soporte");
-            SmtpServer.Host = "smtp.gmail.com";
-            mailM.Subject = "Soporte Votacion";
-            mailM.Body = strBody;
-            mailM.To.Add(correoDestino);
-            mailM.IsBodyHtml = true;
-            mailM.Priority = MailPriority.Normal;
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("votacion.proyecto2020@gmail.com", "negrorico2020");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mailM);
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
-
-    public void enviarCorreoSoporte(String correoDestino, String user)
-    {
-
-        try
-        {
-
-            var EmailTemplate = new System.IO.StreamReader(AppDomain.CurrentDomain.BaseDirectory.Insert(AppDomain.CurrentDomain.BaseDirectory.Length, "\\Template\\mailer4.html"));
-            var strBody = string.Format(EmailTemplate.ReadToEnd(), user);
-            EmailTemplate.Close(); EmailTemplate.Dispose(); EmailTemplate = null;
-
-
-            strBody = strBody.Replace("#TOKEN#", user);
-            MailMessage mailM = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-            mailM.From = new MailAddress("soporte@gmail.com", "Soporte");
-            SmtpServer.Host = "smtp.gmail.com";
-            mailM.Subject = "Soporte Votacion";
-            mailM.Body = strBody;
-            mailM.To.Add(correoDestino);
-            mailM.IsBodyHtml = true;
-            mailM.Priority = MailPriority.Normal;
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("votacion.proyecto2020@gmail.com", "negrorico2020");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mailM);
-        }
-        catch (Exception)
-        {
-            throw;
         }
     }
 }

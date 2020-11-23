@@ -59,7 +59,7 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Identificacion">
 					<span class="label-input100">Cedula</span>
-					<input class="input100" type="text" runat="server" onblur="validate(this)" name="cedula" id="cedula" title="Cedula de ciudadania" pattern="[0-9]{6,10}" required="required">
+					<input class="input100" type="text" name="cedula" id="cedula" title="Cedula de ciudadania" pattern="[0-9]{6,10}" required>
                    
 					<span class="focus-input100"></span>
 				</div>
@@ -97,7 +97,8 @@
 								Enviar							
 							</span>
 						</button>
-					</div>               
+					</div>
+                    <div></div>
                    <div style="margin-top:15px" class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
 						<button runat="server" onserverclick="button_salir" class="contact100-form-btn">
@@ -115,18 +116,6 @@
 
 	<div id="dropDownSelect1"></div>
 
-<!--===============================================================================================-->
-    <script>
-        function validate(input) {
-            var z = document.forms["form1"]["cedula"].value;
-            if (input.value.lenght === 0) {
-                alert("Por favor corrija");
-            }
-            if (!z.match(/^\d+/)) {
-                alert("Ingrese su cedula");
-            }
-        }
-    </script>
 <!--===============================================================================================-->
 	<script src="../App_Themes/Form/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

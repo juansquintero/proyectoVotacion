@@ -30,7 +30,6 @@
 		<input type="email" name="email" value="Correo" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'CORREO@CORREO.COM';}">
 		<textarea type="message" name="message" value="Su mensaje" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'SU MENSAJE';}">Su mensaje</textarea>
 		<input type="submit" class="sign-in" runat="server" onserverclick="envio_soporte" value="Enviar">
-        <input type="submit" class="sign-in" runat="server" onserverclick="salir_menu" value="Salir">
 	</form>
 </div>
     <p>

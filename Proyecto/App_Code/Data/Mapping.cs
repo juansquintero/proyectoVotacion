@@ -17,13 +17,10 @@ public class Mapping : DbContext
     public Mapping()
         : base("name=connect")
     {
-
+        
     }
     public DbSet<E_user> votantes { get; set; }
     public DbSet<E_admin> user_admin { get; set; }
-    public DbSet<E_candidato> candidato { get; set; }
-    public DbSet<E_registro_votado> registro_votado { get; set; }
-    public DbSet<E_conteo> conteo { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
